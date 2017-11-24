@@ -7,24 +7,42 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class ViewController: UIViewController, UISearchBarDelegate {
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar?.delegate = self as? UISearchBarDelegate
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let queryString = searchBar.text
+        if (queryString == nil || queryString?.isEmpty == true) {
+            return
+        }
+        let url = "https://itunes.apple.com/search";
+        let params = ["media": "podcast", "limit": "100", "term": queryString!]
+        Alamofire.request(url, parameters: params)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["text/javascript"])
+            .responseData(){ response in
+//                switch response.result {
+//                case .success(let value):
+//                print("JSON: \(value)")
+//                case .failure(let error):
+//                {onError(error)}
+//                }
+                
+        }
     }
-
-
+    
 }
 
