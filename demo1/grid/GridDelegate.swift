@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class GridDelegate: NSObject, UICollectionViewDataSource {
+class GridDelegate: UIViewController, UICollectionViewDataSource  {
     let CELL_NAME = "RearchResultCell"
     var results: [Results] = []
 
@@ -14,5 +14,5 @@ class GridDelegate: NSObject, UICollectionViewDataSource {
         cell.setResult(results[indexPath.row])
         return cell
     }
-
+    
 }
