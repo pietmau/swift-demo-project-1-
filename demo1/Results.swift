@@ -6,116 +6,154 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar
-
 */
 
 import Foundation
-struct Results : Codable {
-	let wrapperType : String?
-	let kind : String?
-	let collectionId : Int?
-	let trackId : Int?
-	let artistName : String?
-	let collectionName : String?
-	let trackName : String?
-	let collectionCensoredName : String?
-	let trackCensoredName : String?
-	let collectionViewUrl : String?
-	let feedUrl : String?
-	let trackViewUrl : String?
-	let artworkUrl30 : String?
-	let artworkUrl60 : String?
-	let artworkUrl100 : String?
-	let collectionPrice : Int?
-	let trackPrice : Int?
-	let trackRentalPrice : Int?
-	let collectionHdPrice : Int?
-	let trackHdPrice : Int?
-	let trackHdRentalPrice : Int?
-	let releaseDate : String?
-	let collectionExplicitness : String?
-	let trackExplicitness : String?
-	let trackCount : Int?
-	let country : String?
-	let currency : String?
-	let primaryGenreName : String?
-	let contentAdvisoryRating : String?
-	let artworkUrl600 : String?
-	let genreIds : [Int]?
-	let genres : [String]?
+ 
+/* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-	enum CodingKeys: String, CodingKey {
+public class Results {
+	public var wrapperType : String?
+	public var kind : String?
+	public var collectionId : Int?
+	public var trackId : Int?
+	public var artistName : String?
+	public var collectionName : String?
+	public var trackName : String?
+	public var collectionCensoredName : String?
+	public var trackCensoredName : String?
+	public var collectionViewUrl : String?
+	public var feedUrl : String?
+	public var trackViewUrl : String?
+	public var artworkUrl30 : String?
+	public var artworkUrl60 : String?
+	public var artworkUrl100 : String?
+	public var collectionPrice : Int?
+	public var trackPrice : Int?
+	public var trackRentalPrice : Int?
+	public var collectionHdPrice : Int?
+	public var trackHdPrice : Int?
+	public var trackHdRentalPrice : Int?
+	public var releaseDate : String?
+	public var collectionExplicitness : String?
+	public var trackExplicitness : String?
+	public var trackCount : Int?
+	public var country : String?
+	public var currency : String?
+	public var primaryGenreName : String?
+	public var contentAdvisoryRating : String?
+	public var artworkUrl600 : String?
+	public var genreIds : Array<Int>?
+	public var genres : Array<String>?
 
-		case wrapperType = "wrapperType"
-		case kind = "kind"
-		case collectionId = "collectionId"
-		case trackId = "trackId"
-		case artistName = "artistName"
-		case collectionName = "collectionName"
-		case trackName = "trackName"
-		case collectionCensoredName = "collectionCensoredName"
-		case trackCensoredName = "trackCensoredName"
-		case collectionViewUrl = "collectionViewUrl"
-		case feedUrl = "feedUrl"
-		case trackViewUrl = "trackViewUrl"
-		case artworkUrl30 = "artworkUrl30"
-		case artworkUrl60 = "artworkUrl60"
-		case artworkUrl100 = "artworkUrl100"
-		case collectionPrice = "collectionPrice"
-		case trackPrice = "trackPrice"
-		case trackRentalPrice = "trackRentalPrice"
-		case collectionHdPrice = "collectionHdPrice"
-		case trackHdPrice = "trackHdPrice"
-		case trackHdRentalPrice = "trackHdRentalPrice"
-		case releaseDate = "releaseDate"
-		case collectionExplicitness = "collectionExplicitness"
-		case trackExplicitness = "trackExplicitness"
-		case trackCount = "trackCount"
-		case country = "country"
-		case currency = "currency"
-		case primaryGenreName = "primaryGenreName"
-		case contentAdvisoryRating = "contentAdvisoryRating"
-		case artworkUrl600 = "artworkUrl600"
-		case genreIds = "genreIds"
-		case genres = "genres"
+/**
+    Returns an array of models based on given dictionary.
+    
+    Sample usage:
+    let results_list = Results.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
+
+    - parameter array:  NSArray from JSON dictionary.
+
+    - returns: Array of Results Instances.
+*/
+    public class func modelsFromDictionaryArray(array:NSArray) -> [Results]
+    {
+        var models:[Results] = []
+        for item in array
+        {
+            models.append(Results(dictionary: item as! NSDictionary)!)
+        }
+        return models
+    }
+
+/**
+    Constructs the object based on the given dictionary.
+    
+    Sample usage:
+    let results = Results(someDictionaryFromJSON)
+
+    - parameter dictionary:  NSDictionary from JSON.
+
+    - returns: Results Instance.
+*/
+	required public init?(dictionary: NSDictionary) {
+
+		wrapperType = dictionary["wrapperType"] as? String
+		kind = dictionary["kind"] as? String
+		collectionId = dictionary["collectionId"] as? Int
+		trackId = dictionary["trackId"] as? Int
+		artistName = dictionary["artistName"] as? String
+		collectionName = dictionary["collectionName"] as? String
+		trackName = dictionary["trackName"] as? String
+		collectionCensoredName = dictionary["collectionCensoredName"] as? String
+		trackCensoredName = dictionary["trackCensoredName"] as? String
+		collectionViewUrl = dictionary["collectionViewUrl"] as? String
+		feedUrl = dictionary["feedUrl"] as? String
+		trackViewUrl = dictionary["trackViewUrl"] as? String
+		artworkUrl30 = dictionary["artworkUrl30"] as? String
+		artworkUrl60 = dictionary["artworkUrl60"] as? String
+		artworkUrl100 = dictionary["artworkUrl100"] as? String
+		collectionPrice = dictionary["collectionPrice"] as? Int
+		trackPrice = dictionary["trackPrice"] as? Int
+		trackRentalPrice = dictionary["trackRentalPrice"] as? Int
+		collectionHdPrice = dictionary["collectionHdPrice"] as? Int
+		trackHdPrice = dictionary["trackHdPrice"] as? Int
+		trackHdRentalPrice = dictionary["trackHdRentalPrice"] as? Int
+		releaseDate = dictionary["releaseDate"] as? String
+		collectionExplicitness = dictionary["collectionExplicitness"] as? String
+		trackExplicitness = dictionary["trackExplicitness"] as? String
+		trackCount = dictionary["trackCount"] as? Int
+		country = dictionary["country"] as? String
+		currency = dictionary["currency"] as? String
+		primaryGenreName = dictionary["primaryGenreName"] as? String
+		contentAdvisoryRating = dictionary["contentAdvisoryRating"] as? String
+		artworkUrl600 = dictionary["artworkUrl600"] as? String
+		if (dictionary["genreIds"] != nil) { genreIds = dictionary["genreIds"] as? [Int] }
+		if (dictionary["genres"] != nil) { genres = dictionary["genres"] as? [String] }
 	}
 
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		wrapperType = try values.decodeIfPresent(String.self, forKey: .wrapperType)
-		kind = try values.decodeIfPresent(String.self, forKey: .kind)
-		collectionId = try values.decodeIfPresent(Int.self, forKey: .collectionId)
-		trackId = try values.decodeIfPresent(Int.self, forKey: .trackId)
-		artistName = try values.decodeIfPresent(String.self, forKey: .artistName)
-		collectionName = try values.decodeIfPresent(String.self, forKey: .collectionName)
-		trackName = try values.decodeIfPresent(String.self, forKey: .trackName)
-		collectionCensoredName = try values.decodeIfPresent(String.self, forKey: .collectionCensoredName)
-		trackCensoredName = try values.decodeIfPresent(String.self, forKey: .trackCensoredName)
-		collectionViewUrl = try values.decodeIfPresent(String.self, forKey: .collectionViewUrl)
-		feedUrl = try values.decodeIfPresent(String.self, forKey: .feedUrl)
-		trackViewUrl = try values.decodeIfPresent(String.self, forKey: .trackViewUrl)
-		artworkUrl30 = try values.decodeIfPresent(String.self, forKey: .artworkUrl30)
-		artworkUrl60 = try values.decodeIfPresent(String.self, forKey: .artworkUrl60)
-		artworkUrl100 = try values.decodeIfPresent(String.self, forKey: .artworkUrl100)
-		collectionPrice = try values.decodeIfPresent(Int.self, forKey: .collectionPrice)
-		trackPrice = try values.decodeIfPresent(Int.self, forKey: .trackPrice)
-		trackRentalPrice = try values.decodeIfPresent(Int.self, forKey: .trackRentalPrice)
-		collectionHdPrice = try values.decodeIfPresent(Int.self, forKey: .collectionHdPrice)
-		trackHdPrice = try values.decodeIfPresent(Int.self, forKey: .trackHdPrice)
-		trackHdRentalPrice = try values.decodeIfPresent(Int.self, forKey: .trackHdRentalPrice)
-		releaseDate = try values.decodeIfPresent(String.self, forKey: .releaseDate)
-		collectionExplicitness = try values.decodeIfPresent(String.self, forKey: .collectionExplicitness)
-		trackExplicitness = try values.decodeIfPresent(String.self, forKey: .trackExplicitness)
-		trackCount = try values.decodeIfPresent(Int.self, forKey: .trackCount)
-		country = try values.decodeIfPresent(String.self, forKey: .country)
-		currency = try values.decodeIfPresent(String.self, forKey: .currency)
-		primaryGenreName = try values.decodeIfPresent(String.self, forKey: .primaryGenreName)
-		contentAdvisoryRating = try values.decodeIfPresent(String.self, forKey: .contentAdvisoryRating)
-		artworkUrl600 = try values.decodeIfPresent(String.self, forKey: .artworkUrl600)
-		genreIds = try values.decodeIfPresent([Int].self, forKey: .genreIds)
-		genres = try values.decodeIfPresent([String].self, forKey: .genres)
+		
+/**
+    Returns the dictionary representation for the current instance.
+    
+    - returns: NSDictionary.
+*/
+	public func dictionaryRepresentation() -> NSDictionary {
+
+		let dictionary = NSMutableDictionary()
+
+		dictionary.setValue(self.wrapperType, forKey: "wrapperType")
+		dictionary.setValue(self.kind, forKey: "kind")
+		dictionary.setValue(self.collectionId, forKey: "collectionId")
+		dictionary.setValue(self.trackId, forKey: "trackId")
+		dictionary.setValue(self.artistName, forKey: "artistName")
+		dictionary.setValue(self.collectionName, forKey: "collectionName")
+		dictionary.setValue(self.trackName, forKey: "trackName")
+		dictionary.setValue(self.collectionCensoredName, forKey: "collectionCensoredName")
+		dictionary.setValue(self.trackCensoredName, forKey: "trackCensoredName")
+		dictionary.setValue(self.collectionViewUrl, forKey: "collectionViewUrl")
+		dictionary.setValue(self.feedUrl, forKey: "feedUrl")
+		dictionary.setValue(self.trackViewUrl, forKey: "trackViewUrl")
+		dictionary.setValue(self.artworkUrl30, forKey: "artworkUrl30")
+		dictionary.setValue(self.artworkUrl60, forKey: "artworkUrl60")
+		dictionary.setValue(self.artworkUrl100, forKey: "artworkUrl100")
+		dictionary.setValue(self.collectionPrice, forKey: "collectionPrice")
+		dictionary.setValue(self.trackPrice, forKey: "trackPrice")
+		dictionary.setValue(self.trackRentalPrice, forKey: "trackRentalPrice")
+		dictionary.setValue(self.collectionHdPrice, forKey: "collectionHdPrice")
+		dictionary.setValue(self.trackHdPrice, forKey: "trackHdPrice")
+		dictionary.setValue(self.trackHdRentalPrice, forKey: "trackHdRentalPrice")
+		dictionary.setValue(self.releaseDate, forKey: "releaseDate")
+		dictionary.setValue(self.collectionExplicitness, forKey: "collectionExplicitness")
+		dictionary.setValue(self.trackExplicitness, forKey: "trackExplicitness")
+		dictionary.setValue(self.trackCount, forKey: "trackCount")
+		dictionary.setValue(self.country, forKey: "country")
+		dictionary.setValue(self.currency, forKey: "currency")
+		dictionary.setValue(self.primaryGenreName, forKey: "primaryGenreName")
+		dictionary.setValue(self.contentAdvisoryRating, forKey: "contentAdvisoryRating")
+		dictionary.setValue(self.artworkUrl600, forKey: "artworkUrl600")
+
+		return dictionary
 	}
 
 }
