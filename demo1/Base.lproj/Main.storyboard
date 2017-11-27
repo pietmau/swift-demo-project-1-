@@ -25,19 +25,35 @@
                                 <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                                 <color key="backgroundColor" red="0.071068557369999993" green="1" blue="0.10520946840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fL5-KP-VEU">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="134" height="112"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Jwy-8B-nYG">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RearchResultCell" id="Jwy-8B-nYG" customClass="GridCell" customModule="demo1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="134" height="112"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="134" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IN1-uR-1ey">
+                                                    <rect key="frame" x="0.0" y="0.0" width="134" height="112"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="IN1-uR-1ey" secondAttribute="bottom" id="22d-Vg-ykW"/>
+                                            <constraint firstAttribute="trailing" secondItem="IN1-uR-1ey" secondAttribute="trailing" id="Ote-SW-Esh"/>
+                                            <constraint firstItem="IN1-uR-1ey" firstAttribute="leading" secondItem="Jwy-8B-nYG" secondAttribute="leading" id="T4X-e5-QuO"/>
+                                            <constraint firstItem="IN1-uR-1ey" firstAttribute="top" secondItem="Jwy-8B-nYG" secondAttribute="top" id="kOc-U8-KDc"/>
+                                        </constraints>
+                                        <size key="customSize" width="134" height="112"/>
+                                        <connections>
+                                            <outlet property="image" destination="IN1-uR-1ey" id="mnI-q0-YrO"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -55,6 +71,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="grid" destination="bp0-0B-AIG" id="gzl-4L-rMn"/>
                         <outlet property="searchBar" destination="kIv-ZQ-OYV" id="T2d-6J-YvF"/>
                     </connections>
                 </viewController>

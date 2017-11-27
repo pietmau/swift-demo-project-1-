@@ -7,8 +7,8 @@ target 'demo1' do
 
   # Pods for demo1
   pod 'Alamofire'
-  pod 'ObjectMapper', '~> 2.2'
-  #pod 'AlamofireObjectMapper', '~> 5.0'
+  #pod 'ObjectMapper', '~> 2.2'
+  pod 'Kingfisher', '~> 3.0'
   
   target 'demo1Tests' do
     inherit! :search_paths
