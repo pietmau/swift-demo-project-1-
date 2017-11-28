@@ -13,7 +13,7 @@ class GridCell: UICollectionViewCell {
 
     func setResult(_ element: Results) {
         self.serchresullt = element
-        if let url60 = element.artworkUrl60 {
+        if let url60 = element.artworkUrl100 {
             let url = URL(string: url60)
             image.kf.setImage(with: url)
         }

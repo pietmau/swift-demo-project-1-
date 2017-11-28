@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GridViewController: UIViewController, MainView {
+class GridViewController: UIViewController {
     let SPACING = CGFloat(3)
     @IBOutlet weak var grid: UICollectionView!
     private var delegate: GridDelegate? = nil

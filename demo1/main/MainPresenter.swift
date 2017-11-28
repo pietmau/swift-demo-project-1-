@@ -7,9 +7,9 @@ import Foundation
 import UIKit
 import Alamofire
 
-class FooPresenter: NSObject, UISearchBarDelegate {
+class MainPresenter: NSObject, UISearchBarDelegate {
 
-    var view: FooView? = nil
+    var view: MainView? = nil
 
     private func onError(_ error: Error?) {
 

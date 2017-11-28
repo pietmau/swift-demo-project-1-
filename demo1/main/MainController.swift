@@ -1,14 +1,14 @@
 import UIKit
 
-class MainController: UIViewController, FooView {
+class MainController: UIViewController, MainView {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var gridContanierView: UIView!
     @IBOutlet weak var brianContainerView: UIView!
-    private var presenter: FooPresenter? = nil
+    private var presenter: MainPresenter? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = FooPresenter()
+        presenter = MainPresenter()
         searchBar?.delegate = presenter
         presenter?.view = self
     }
