@@ -11,8 +11,6 @@ class MainController: UIViewController, FooView {
         presenter = FooPresenter()
         searchBar?.delegate = presenter
         presenter?.view = self
-        let ff = childViewControllers
-        print("")
     }
 
     func setResults(_ results: [Results]) {

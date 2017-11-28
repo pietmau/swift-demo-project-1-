@@ -10,7 +10,6 @@ import UIKit
 
 class GridViewController: UIViewController, MainView {
     let SPACING = CGFloat(3)
-    private var presenter: MainPresenter?
     @IBOutlet weak var grid: UICollectionView!
     private var delegate: GridDelegate? = nil
     private var layout: UICollectionViewDelegateFlowLayout? = nil
@@ -28,8 +27,6 @@ class GridViewController: UIViewController, MainView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = MainPresenter()
-        presenter!.view = self
         delegate = GridDelegate()
         grid?.dataSource = delegate
         layout = Layout()
@@ -39,12 +36,5 @@ class GridViewController: UIViewController, MainView {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presenter?.searchBarSearchButtonClicked(searchText)
-    }
 }
