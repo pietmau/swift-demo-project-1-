@@ -43,8 +43,7 @@ class GridViewController: UIViewController, MainView {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
     }
-    
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presenter?.searchBarSearchButtonClicked(searchText)
     }

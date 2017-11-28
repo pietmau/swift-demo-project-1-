@@ -29,9 +29,8 @@
                                     <segue destination="oeF-IH-OpN" kind="embed" id="nRI-y8-Mjy"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQ6-dm-gIQ">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQ6-dm-gIQ">
                                 <rect key="frame" x="0.0" y="76" width="375" height="591"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Fz0-ur-YCn" kind="embed" id="SFI-Kh-e0a"/>
                                 </connections>
@@ -39,22 +38,29 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wQ6-dm-gIQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2YF-xE-6JM"/>
                             <constraint firstItem="kIv-ZQ-OYV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9t9-pW-gj9"/>
                             <constraint firstItem="W6A-Ic-dGA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="BW3-v7-Sfz"/>
                             <constraint firstItem="kIv-ZQ-OYV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JDr-Jx-v1g"/>
+                            <constraint firstItem="wQ6-dm-gIQ" firstAttribute="top" secondItem="kIv-ZQ-OYV" secondAttribute="bottom" id="KS4-cQ-7IV"/>
                             <constraint firstItem="W6A-Ic-dGA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PsB-oD-7pf"/>
                             <constraint firstItem="W6A-Ic-dGA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Qlr-Hi-JtP"/>
                             <constraint firstItem="kIv-ZQ-OYV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UTG-c3-EgG"/>
+                            <constraint firstItem="wQ6-dm-gIQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XJb-EH-zpC"/>
                             <constraint firstItem="W6A-Ic-dGA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cDI-wN-XxZ"/>
                             <constraint firstItem="W6A-Ic-dGA" firstAttribute="top" secondItem="kIv-ZQ-OYV" secondAttribute="bottom" id="gya-GH-f5E"/>
                             <constraint firstItem="W6A-Ic-dGA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="kUV-Wz-yln"/>
                             <constraint firstItem="W6A-Ic-dGA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="njc-Nn-e4C"/>
                             <constraint firstItem="W6A-Ic-dGA" firstAttribute="top" secondItem="kIv-ZQ-OYV" secondAttribute="bottom" id="q3g-gQ-srf"/>
+                            <constraint firstItem="wQ6-dm-gIQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="r74-AM-Fo7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="brianContainerView" destination="wQ6-dm-gIQ" id="dm4-4g-yaL"/>
                         <outlet property="grid" destination="bp0-0B-AIG" id="gzl-4L-rMn"/>
+                        <outlet property="gridContanierView" destination="W6A-Ic-dGA" id="EkJ-KC-GF9"/>
+                        <outlet property="searchBar" destination="kIv-ZQ-OYV" id="lTn-su-Vix"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -113,6 +119,7 @@
                             <constraint firstAttribute="trailing" secondItem="bp0-0B-AIG" secondAttribute="trailing" id="sFE-Zd-110"/>
                             <constraint firstItem="bp0-0B-AIG" firstAttribute="leading" secondItem="hEM-Ef-mAo" secondAttribute="leading" id="zr8-yU-SKs"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="K88-ji-qPL"/>
                     </view>
                     <connections>
                         <outlet property="grid" destination="bp0-0B-AIG" id="C9f-SI-luh"/>
@@ -147,6 +154,7 @@
                             <constraint firstItem="f9y-Ob-8oL" firstAttribute="centerX" secondItem="Voj-jh-q5i" secondAttribute="centerX" id="P6T-H2-kHL"/>
                             <constraint firstItem="dfP-Bm-DAL" firstAttribute="centerY" secondItem="Voj-jh-q5i" secondAttribute="centerY" id="ki1-8N-W6c"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="vx4-nv-gx4"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="584-50-zjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
