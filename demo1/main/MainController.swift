@@ -14,7 +14,7 @@ class MainController: UIViewController, MainView {
     }
 
     func setResults(_ results: [Results]) {
-        (childViewControllers[0] as! GridViewController).setResults(results)
+        //(childViewControllers[0] as! GridViewController).setResults(results)
     }
 
     func hideBrian() {
