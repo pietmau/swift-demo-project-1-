@@ -1,9 +1,11 @@
 import Foundation
 import UIKit
 
-class GridDelegate: UIViewController, UICollectionViewDataSource  {
+class GridDelegate: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    let SPACING = CGFloat(3)
     let CELL_NAME = "RearchResultCell"
     var results: [Results] = []
+    var callback: OnItemClickedCallback? = nil
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return results.count
@@ -14,5 +16,13 @@ class GridDelegate: UIViewController, UICollectionViewDataSource  {
         cell.setResult(results[indexPath.row])
         return cell
     }
-    
+
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        callback?.onItemClicked(results[indexPath.row])
+    }
+}
+
+protocol OnItemClickedCallback {
+    func onItemClicked(_ element: Results)
 }

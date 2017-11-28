@@ -8,23 +8,22 @@
 
 import UIKit
 
-class Layout: NSObject, UICollectionViewDelegateFlowLayout {
-    let SPACING = CGFloat(3)
-    
+extension GridDelegate: UICollectionViewDelegateFlowLayout {
+
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return SPACING
     }
-    
+
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return SPACING
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         print("sizeForItemAt")
         return calculateItemSize(collectionView)
     }
-    
+
     private func calculateItemSize(_ collectionView: UICollectionView) -> CGSize {
         switch (UIDevice.current.orientation) {
         case .landscapeLeft,
@@ -39,13 +38,13 @@ class Layout: NSObject, UICollectionViewDelegateFlowLayout {
             return getPortraitSize(collectionView)
         }
     }
-    
+
     private func getPortraitSize(_ collectionView: UICollectionView) -> CGSize {
         let size: CGFloat = (collectionView.frame.width - 2.0 * SPACING) / 3.0
         print("portrait \(size)")
         return CGSize(width: size, height: size)
     }
-    
+
     private func getLandscapeSize(_ collectionView: UICollectionView) -> CGSize {
         let size: CGFloat = (collectionView.frame.width - 4.0 * SPACING) / 5.0
         print("landscape \(size)")

@@ -8,33 +8,35 @@
 
 import UIKit
 
-class GridViewController: UIViewController {
+class GridViewController: UIViewController, OnItemClickedCallback {
     let SPACING = CGFloat(3)
     @IBOutlet weak var grid: UICollectionView!
-    private var delegate: GridDelegate? = nil
-    private var layout: UICollectionViewDelegateFlowLayout? = nil
-    
+    private let delegate: GridDelegate = GridDelegate()
+
     func setResults(_ results: [Results]) {
         (grid?.dataSource as? GridDelegate)?.results = results
         grid.reloadData()
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         print("viewWillLayoutSubviews")
         grid.collectionViewLayout.invalidateLayout()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = GridDelegate()
+        delegate.callback = self
         grid?.dataSource = delegate
-        layout = Layout()
-        grid?.delegate = layout
+        grid?.delegate = delegate
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    func onItemClicked(_ element: Results) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "SinglePodcast") as! SinglePodcastController
+        present(controller, animated: true, completion: nil)
+    }
 }
