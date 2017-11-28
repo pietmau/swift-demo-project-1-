@@ -23,8 +23,47 @@
                                 <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bp0-0B-AIG">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6A-Ic-dGA">
                                 <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <connections>
+                                    <segue destination="oeF-IH-OpN" kind="embed" id="nRI-y8-Mjy"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kIv-ZQ-OYV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9t9-pW-gj9"/>
+                            <constraint firstItem="W6A-Ic-dGA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="BW3-v7-Sfz"/>
+                            <constraint firstItem="kIv-ZQ-OYV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JDr-Jx-v1g"/>
+                            <constraint firstItem="W6A-Ic-dGA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PsB-oD-7pf"/>
+                            <constraint firstItem="W6A-Ic-dGA" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Qlr-Hi-JtP"/>
+                            <constraint firstItem="kIv-ZQ-OYV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UTG-c3-EgG"/>
+                            <constraint firstItem="W6A-Ic-dGA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cDI-wN-XxZ"/>
+                            <constraint firstItem="W6A-Ic-dGA" firstAttribute="top" secondItem="kIv-ZQ-OYV" secondAttribute="bottom" id="gya-GH-f5E"/>
+                            <constraint firstItem="W6A-Ic-dGA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="kUV-Wz-yln"/>
+                            <constraint firstItem="W6A-Ic-dGA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="njc-Nn-e4C"/>
+                            <constraint firstItem="W6A-Ic-dGA" firstAttribute="top" secondItem="kIv-ZQ-OYV" secondAttribute="bottom" id="q3g-gQ-srf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="grid" destination="bp0-0B-AIG" id="gzl-4L-rMn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-596" y="-202.84857571214394"/>
+        </scene>
+        <!--Grid View Controller-->
+        <scene sceneID="7Oq-bR-7XO">
+            <objects>
+                <viewController id="oeF-IH-OpN" customClass="GridViewController" customModule="demo1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hEM-Ef-mAo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bp0-0B-AIG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fL5-KP-VEU">
                                     <size key="itemSize" width="134" height="112"/>
@@ -60,26 +99,21 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bp0-0B-AIG" firstAttribute="top" secondItem="kIv-ZQ-OYV" secondAttribute="bottom" id="66U-jc-yzt"/>
-                            <constraint firstItem="kIv-ZQ-OYV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9t9-pW-gj9"/>
-                            <constraint firstItem="bp0-0B-AIG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BvK-7E-rVG"/>
-                            <constraint firstItem="kIv-ZQ-OYV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JDr-Jx-v1g"/>
-                            <constraint firstItem="bp0-0B-AIG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MGV-HU-xLE"/>
-                            <constraint firstItem="kIv-ZQ-OYV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UTG-c3-EgG"/>
-                            <constraint firstItem="bp0-0B-AIG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VPd-Vk-1S0"/>
+                            <constraint firstAttribute="bottom" secondItem="bp0-0B-AIG" secondAttribute="bottom" id="ntj-yI-Fei"/>
+                            <constraint firstItem="bp0-0B-AIG" firstAttribute="top" secondItem="hEM-Ef-mAo" secondAttribute="top" id="oQ6-sd-qDo"/>
+                            <constraint firstAttribute="trailing" secondItem="bp0-0B-AIG" secondAttribute="trailing" id="sFE-Zd-110"/>
+                            <constraint firstItem="bp0-0B-AIG" firstAttribute="leading" secondItem="hEM-Ef-mAo" secondAttribute="leading" id="zr8-yU-SKs"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="grid" destination="bp0-0B-AIG" id="gzl-4L-rMn"/>
-                        <outlet property="searchBar" destination="kIv-ZQ-OYV" id="T2d-6J-YvF"/>
+                        <outlet property="grid" destination="bp0-0B-AIG" id="C9f-SI-luh"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JMJ-m9-JXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-596" y="-202.84857571214394"/>
+            <point key="canvasLocation" x="288.80000000000001" y="-203.74812593703149"/>
         </scene>
     </scenes>
 </document>
