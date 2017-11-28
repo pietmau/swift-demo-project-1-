@@ -129,6 +129,21 @@
             </objects>
             <point key="canvasLocation" x="288.80000000000001" y="-203.74812593703149"/>
         </scene>
+        <!--Single Podcast Controller-->
+        <scene sceneID="rga-YE-Plz">
+            <objects>
+                <viewController storyboardIdentifier="SinglePodcast" id="raX-HO-Cew" customClass="SinglePodcastController" customModule="demo1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PYB-M9-sQ1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="OsC-tZ-5sz"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Djo-ap-2tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180" y="-205"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="qMt-Nl-nXi">
             <objects>
