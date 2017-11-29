@@ -2,21 +2,20 @@ import Foundation
 import UIKit
 import FeedKit
 
-class EpisodesListDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
-
+class EpisodesListDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
     var items: [RSSFeedItem] = []
 
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return 0
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "",
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeItem",
                 for: indexPath)
         cell.backgroundColor = UIColor.black
         // Configure the cell
         return cell
     }
+
+
 }

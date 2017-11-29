@@ -8,7 +8,7 @@ import UIKit
 import FeedKit
 
 class SinglePodcastController: UIViewController {
-    @IBOutlet weak var episodesCollectionView: UICollectionView!
+    @IBOutlet weak var episodesTableView: UITableView!
     @IBOutlet weak var controllerTitle: UINavigationItem!
     @IBOutlet weak var image: UIImageView!
     var podcast: Result? = nil
@@ -31,13 +31,14 @@ class SinglePodcastController: UIViewController {
                 DispatchQueue.main.async {
                     if let items = result.rssFeed?.items, !items.isEmpty {
                         self.episodesDelegate.items = items
-
+                        self.episodesTableView.reloadData()
                     }
 
                 }
             }
         }
-        episodesCollectionView.delegate = episodesDelegate
+        episodesTableView.delegate = episodesDelegate
+        episodesTableView.dataSource = episodesDelegate
     }
 
     private func fff() {
