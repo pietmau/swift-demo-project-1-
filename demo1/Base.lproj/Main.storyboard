@@ -132,12 +132,14 @@
         <!--Single Podcast Controller-->
         <scene sceneID="rga-YE-Plz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Djo-ap-2tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SinglePodcast" id="raX-HO-Cew" customClass="SinglePodcastController" customModule="demo1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PYB-M9-sQ1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="chris" translatesAutoresizingMaskIntoConstraints="NO" id="gn4-MO-JZC">
+                                <rect key="frame" x="0.0" y="20" width="375" height="208"/>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="kE5-sn-PXJ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
@@ -150,15 +152,12 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="chris" translatesAutoresizingMaskIntoConstraints="NO" id="gn4-MO-JZC">
-                                <rect key="frame" x="0.0" y="64" width="375" height="208"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kE5-sn-PXJ" firstAttribute="leading" secondItem="PYB-M9-sQ1" secondAttribute="leading" id="8bh-1I-N40"/>
-                            <constraint firstItem="OsC-tZ-5sz" firstAttribute="bottom" secondItem="gn4-MO-JZC" secondAttribute="bottom" constant="395" id="A8X-xx-Od9"/>
-                            <constraint firstItem="gn4-MO-JZC" firstAttribute="top" secondItem="kE5-sn-PXJ" secondAttribute="bottom" id="Hrf-5b-mrG"/>
+                            <constraint firstItem="OsC-tZ-5sz" firstAttribute="bottom" secondItem="gn4-MO-JZC" secondAttribute="bottom" constant="439" id="A8X-xx-Od9"/>
+                            <constraint firstItem="gn4-MO-JZC" firstAttribute="top" secondItem="kE5-sn-PXJ" secondAttribute="bottom" constant="-44" id="Hrf-5b-mrG"/>
                             <constraint firstItem="gn4-MO-JZC" firstAttribute="trailing" secondItem="OsC-tZ-5sz" secondAttribute="trailing" id="IdX-fQ-noS"/>
                             <constraint firstItem="kE5-sn-PXJ" firstAttribute="top" secondItem="OsC-tZ-5sz" secondAttribute="top" id="KtH-36-XTi"/>
                             <constraint firstItem="OsC-tZ-5sz" firstAttribute="trailing" secondItem="kE5-sn-PXJ" secondAttribute="trailing" id="pqL-Ai-P7q"/>
@@ -171,6 +170,7 @@
                         <outlet property="image" destination="gn4-MO-JZC" id="zBH-8D-Ptg"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Djo-ap-2tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1244" y="-170.46476761619192"/>
         </scene>
