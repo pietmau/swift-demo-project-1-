@@ -7,7 +7,7 @@ target 'demo1' do
 
   # Pods for demo1
   pod 'Alamofire'
-  #pod 'ObjectMapper', '~> 2.2'
+  pod 'FeedKit', '~> 6.0'
   pod 'Kingfisher', '~> 3.0'
   
   target 'demo1Tests' do

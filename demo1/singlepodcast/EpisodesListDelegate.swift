@@ -1,22 +1,19 @@
-//
-// Created by Maurizio Pietrantuono on 29/11/2017.
-// Copyright (c) 2017 Maurizio Pietrantuono. All rights reserved.
-//
-
 import Foundation
 import UIKit
+import FeedKit
 
-class EpisodesListDelegate: NSObject,UICollectionViewDelegate, UICollectionViewDataSource {
+class EpisodesListDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
+
+    var items: [RSSFeedItem] = []
 
     func collectionView(_ collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int {
+                        numberOfItemsInSection section: Int) -> Int {
         return 0
     }
 
-
     func collectionView(_ collectionView: UICollectionView,
-                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"",
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "",
                 for: indexPath)
         cell.backgroundColor = UIColor.black
         // Configure the cell
