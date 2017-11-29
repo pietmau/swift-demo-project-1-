@@ -8,6 +8,7 @@ import UIKit
 
 class SinglePodcastController: UIViewController {
 
+    //@IBOutlet weak var title: UINavigationItem!
     @IBOutlet weak var image: UIImageView!
     var podcast: Result? = nil
 
@@ -20,6 +21,9 @@ class SinglePodcastController: UIViewController {
         if let artworkUrl100 = podcast?.artworkUrl100 {
             let url = URL(string: artworkUrl100)
             image.kf.setImage(with: url)
+        }
+        if let podcastTitle = podcast?.collectionName {
+         //   title.title = podcastTitle
         }
     }
 }
