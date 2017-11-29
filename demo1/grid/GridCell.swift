@@ -9,9 +9,9 @@ import Kingfisher
 
 class GridCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
-    var serchresullt: Results? = nil
+    var serchresullt: Result? = nil
 
-    func setResult(_ element: Results) {
+    func setResult(_ element: Result) {
         self.serchresullt = element
         if let url60 = element.artworkUrl100 {
             let url = URL(string: url60)

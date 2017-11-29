@@ -13,7 +13,7 @@ class GridViewController: UIViewController, OnItemClickedCallback {
     @IBOutlet weak var grid: UICollectionView!
     private let delegate: GridDelegate = GridDelegate()
 
-    func setResults(_ results: [Results]) {
+    func setResults(_ results: [Result]) {
         (grid?.dataSource as? GridDelegate)?.results = results
         grid.reloadData()
     }
@@ -35,8 +35,9 @@ class GridViewController: UIViewController, OnItemClickedCallback {
         super.didReceiveMemoryWarning()
     }
 
-    func onItemClicked(_ element: Results) {
+    func onItemClicked(_ element: Result) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "SinglePodcast") as! SinglePodcastController
-        present(controller, animated: false)
+        controller.podcast = element
+        show(controller, sender: self)
     }
 }

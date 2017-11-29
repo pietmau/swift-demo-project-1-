@@ -4,7 +4,7 @@ import UIKit
 class GridDelegate: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     let SPACING = CGFloat(3)
     let CELL_NAME = "RearchResultCell"
-    var results: [Results] = []
+    var results: [Result] = []
     var callback: OnItemClickedCallback? = nil
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -24,5 +24,5 @@ class GridDelegate: UIViewController, UICollectionViewDelegate, UICollectionView
 }
 
 protocol OnItemClickedCallback {
-    func onItemClicked(_ element: Results)
+    func onItemClicked(_ element: Result)
 }

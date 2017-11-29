@@ -12,7 +12,7 @@ import Foundation
  
 /* For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
-public class Results {
+public class Result {
 
 
     public var wrapperType : String?
@@ -58,12 +58,12 @@ public class Results {
 
     - returns: Array of Results Instances.
 */
-    public class func modelsFromDictionaryArray(array:NSArray) -> [Results]
+    public class func modelsFromDictionaryArray(array:NSArray) -> [Result]
     {
-        var models:[Results] = []
+        var models:[Result] = []
         for item in array
         {
-            models.append(Results(dictionary: item as! NSDictionary)!)
+            models.append(Result(dictionary: item as! NSDictionary)!)
         }
         return models
     }

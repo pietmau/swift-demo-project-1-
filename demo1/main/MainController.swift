@@ -13,7 +13,7 @@ class MainController: UIViewController, MainView {
         presenter?.view = self
     }
 
-    func setResults(_ results: [Results]) {
+    func setResults(_ results: [Result]) {
         (childViewControllers[0] as! GridViewController).setResults(results)
     }
 
