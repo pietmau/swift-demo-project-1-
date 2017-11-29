@@ -167,6 +167,7 @@
                         <viewLayoutGuide key="safeArea" id="OsC-tZ-5sz"/>
                     </view>
                     <connections>
+                        <outlet property="controllerTitle" destination="CjL-yc-pff" id="hSW-xz-HDb"/>
                         <outlet property="image" destination="gn4-MO-JZC" id="zBH-8D-Ptg"/>
                     </connections>
                 </viewController>
