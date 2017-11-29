@@ -7,10 +7,11 @@ import Foundation
 import UIKit
 
 class SinglePodcastController: UIViewController {
-
+    //@IBOutlet weak var episodesCollectionView: UICollectionView!
     @IBOutlet weak var controllerTitle: UINavigationItem!
     @IBOutlet weak var image: UIImageView!
     var podcast: Result? = nil
+    let episodesDelegate = EpisodesListDelegate()
 
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true)
@@ -25,5 +26,7 @@ class SinglePodcastController: UIViewController {
         if let podcastTitle = podcast?.collectionName {
             controllerTitle.title = podcastTitle
         }
+        //episodesCollectionView.delegate = episodesDelegate
+        //episodesDelegate.items = podcast.
     }
 }

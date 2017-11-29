@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,23 +14,23 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainController" customModule="demo1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kIv-ZQ-OYV">
-                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="56"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6A-Ic-dGA">
-                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="56" width="667" height="319"/>
                                 <connections>
                                     <segue destination="oeF-IH-OpN" kind="embed" id="nRI-y8-Mjy"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQ6-dm-gIQ">
-                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="56" width="667" height="319"/>
                                 <connections>
                                     <segue destination="Fz0-ur-YCn" kind="embed" id="SFI-Kh-e0a"/>
                                 </connections>
@@ -72,11 +72,11 @@
             <objects>
                 <viewController id="oeF-IH-OpN" customClass="GridViewController" customModule="demo1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hEM-Ef-mAo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="319"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bp0-0B-AIG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="319"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fL5-KP-VEU">
                                     <size key="itemSize" width="134" height="112"/>
@@ -134,14 +134,17 @@
             <objects>
                 <viewController storyboardIdentifier="SinglePodcast" id="raX-HO-Cew" customClass="SinglePodcastController" customModule="demo1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PYB-M9-sQ1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="chris" translatesAutoresizingMaskIntoConstraints="NO" id="gn4-MO-JZC">
-                                <rect key="frame" x="0.0" y="20" width="375" height="208"/>
+                                <rect key="frame" x="0.0" y="-12" width="667" height="338"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="338" id="Eie-at-S5y"/>
+                                </constraints>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="kE5-sn-PXJ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="32"/>
                                 <items>
                                     <navigationItem title="Title" id="CjL-yc-pff">
                                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="vCV-rl-THB">
@@ -152,16 +155,39 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lJY-16-m5z">
+                                <rect key="frame" x="0.0" y="326" width="667" height="49"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QvL-g7-c9u">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HBn-7G-e1Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kE5-sn-PXJ" firstAttribute="leading" secondItem="PYB-M9-sQ1" secondAttribute="leading" id="8bh-1I-N40"/>
-                            <constraint firstItem="OsC-tZ-5sz" firstAttribute="bottom" secondItem="gn4-MO-JZC" secondAttribute="bottom" constant="439" id="A8X-xx-Od9"/>
+                            <constraint firstItem="lJY-16-m5z" firstAttribute="leading" secondItem="OsC-tZ-5sz" secondAttribute="leading" id="9kj-rG-4jQ"/>
                             <constraint firstItem="gn4-MO-JZC" firstAttribute="top" secondItem="kE5-sn-PXJ" secondAttribute="bottom" constant="-44" id="Hrf-5b-mrG"/>
                             <constraint firstItem="gn4-MO-JZC" firstAttribute="trailing" secondItem="OsC-tZ-5sz" secondAttribute="trailing" id="IdX-fQ-noS"/>
                             <constraint firstItem="kE5-sn-PXJ" firstAttribute="top" secondItem="OsC-tZ-5sz" secondAttribute="top" id="KtH-36-XTi"/>
+                            <constraint firstItem="OsC-tZ-5sz" firstAttribute="trailing" secondItem="lJY-16-m5z" secondAttribute="trailing" id="LbH-C6-M50"/>
+                            <constraint firstItem="lJY-16-m5z" firstAttribute="top" secondItem="gn4-MO-JZC" secondAttribute="bottom" id="fHC-e6-5ZA"/>
                             <constraint firstItem="OsC-tZ-5sz" firstAttribute="trailing" secondItem="kE5-sn-PXJ" secondAttribute="trailing" id="pqL-Ai-P7q"/>
                             <constraint firstItem="gn4-MO-JZC" firstAttribute="leading" secondItem="OsC-tZ-5sz" secondAttribute="leading" id="rzC-vO-Hc7"/>
+                            <constraint firstItem="OsC-tZ-5sz" firstAttribute="bottom" secondItem="lJY-16-m5z" secondAttribute="bottom" id="tCs-p3-R5f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OsC-tZ-5sz"/>
                     </view>
@@ -179,11 +205,11 @@
             <objects>
                 <viewController id="Fz0-ur-YCn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Voj-jh-q5i">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="319"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ff9-gv-Epc">
-                                <rect key="frame" x="50" y="119.5" width="275" height="352"/>
+                                <rect key="frame" x="196" y="-16.5" width="275" height="352"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brian" translatesAutoresizingMaskIntoConstraints="NO" id="dfP-Bm-DAL">
                                         <rect key="frame" x="0.0" y="0.0" width="275" height="316"/>
