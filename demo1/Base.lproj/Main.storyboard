@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -159,14 +160,49 @@
                                 <rect key="frame" x="0.0" y="358" width="375" height="309"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EpisodeItem" id="yZf-cc-9SP">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EpisodeItem" rowHeight="107" id="yZf-cc-9SP" customClass="EpisodeCell" customModule="demo1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yZf-cc-9SP" id="DLu-H3-cQv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="106.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" red="0.097311282169999999" green="0.24928692259999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CUT-cp-cSj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="107" height="107"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="107" id="cr8-bh-Uku"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owI-ls-tOa">
+                                                    <rect key="frame" x="107" y="8" width="260" height="26"/>
+                                                    <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INU-Ei-s91">
+                                                    <rect key="frame" x="107" y="50" width="260" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="owI-ls-tOa" firstAttribute="top" secondItem="DLu-H3-cQv" secondAttribute="topMargin" id="8g7-LO-c5O"/>
+                                                <constraint firstItem="CUT-cp-cSj" firstAttribute="leading" secondItem="DLu-H3-cQv" secondAttribute="leading" id="ANT-dQ-lrf"/>
+                                                <constraint firstItem="INU-Ei-s91" firstAttribute="top" secondItem="owI-ls-tOa" secondAttribute="bottom" constant="16" id="FQW-jg-VFe"/>
+                                                <constraint firstItem="owI-ls-tOa" firstAttribute="leading" secondItem="CUT-cp-cSj" secondAttribute="trailing" id="Her-Kn-9Qb"/>
+                                                <constraint firstItem="owI-ls-tOa" firstAttribute="trailing" secondItem="DLu-H3-cQv" secondAttribute="trailingMargin" id="HnM-1N-VuN"/>
+                                                <constraint firstAttribute="bottom" secondItem="CUT-cp-cSj" secondAttribute="bottom" id="fz8-zf-aoo"/>
+                                                <constraint firstItem="CUT-cp-cSj" firstAttribute="top" secondItem="DLu-H3-cQv" secondAttribute="top" id="pJz-5v-LPw"/>
+                                                <constraint firstItem="INU-Ei-s91" firstAttribute="trailing" secondItem="DLu-H3-cQv" secondAttribute="trailingMargin" id="ulA-cy-dtP"/>
+                                                <constraint firstItem="INU-Ei-s91" firstAttribute="leading" secondItem="CUT-cp-cSj" secondAttribute="trailing" id="zED-Xz-TpI"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="desctiptionItem" destination="INU-Ei-s91" id="WSt-7u-2lF"/>
+                                            <outlet property="podcastImage" destination="CUT-cp-cSj" id="MN7-mt-TOB"/>
+                                            <outlet property="titleLabel" destination="owI-ls-tOa" id="xWW-GV-Bcr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -11,9 +11,8 @@ class EpisodesListDelegate: NSObject, UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeItem",
-                for: indexPath)
-        cell.backgroundColor = UIColor.black
-        // Configure the cell
+                for: indexPath) as! EpisodeCell
+        cell.bind(items[indexPath.row])
         return cell
     }
 
