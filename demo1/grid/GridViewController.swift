@@ -36,8 +36,9 @@ class GridViewController: UIViewController, OnItemClickedCallback {
     }
 
     func onItemClicked(_ element: Result) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "SinglePodcast") as! SinglePodcastController
-        controller.podcast = element
+        let controller = storyboard?.instantiateViewController(withIdentifier: "Navigation") as! UINavigationController
+        let singlePodcastController = controller.childViewControllers[0] as! SinglePodcastController
+        singlePodcastController.podcast = element
         show(controller, sender: self)
     }
 }
