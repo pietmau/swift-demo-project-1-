@@ -162,7 +162,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="106.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CUT-cp-cSj">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CUT-cp-cSj">
                                                     <rect key="frame" x="5" y="5" width="75" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="75" id="cr8-bh-Uku"/>
@@ -239,6 +239,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activtyIndicator" destination="Dct-cF-aiK" id="MbB-3q-LyZ"/>
+                        <outlet property="brian" destination="8Qe-lz-Veh" id="pam-pk-xer"/>
                         <outlet property="episodesTableView" destination="SN1-OK-Qsd" id="Us8-gg-19y"/>
                         <outlet property="image" destination="gn4-MO-JZC" id="zBH-8D-Ptg"/>
                     </connections>

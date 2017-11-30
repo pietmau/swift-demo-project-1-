@@ -20,4 +20,7 @@ class EpisodesListDelegate: NSObject, UITableViewDelegate, UITableViewDataSource
         return 85.0;
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
