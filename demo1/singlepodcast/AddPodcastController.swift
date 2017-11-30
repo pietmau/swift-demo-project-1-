@@ -14,9 +14,9 @@ class SinglePodcastController: UIViewController {
     let episodesDelegate = EpisodesListDelegate()
 
     @IBAction func close(_ sender: Any) {
-     self.dismiss(animated: true)
+        self.dismiss(animated: true)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let artworkUrl100 = podcast?.artworkUrl100 {
@@ -26,13 +26,15 @@ class SinglePodcastController: UIViewController {
             title = podcastTitle
         }
         if let urlString = podcast?.feedUrl, let url = URL(string: urlString) {
-            FeedParser(URL: url)?.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { (result) in
-                DispatchQueue.main.async {
-                    if let items = result.rssFeed?.items, !items.isEmpty {
-                        self.episodesDelegate.items = items
-                        self.episodesTableView.reloadData()
-                    }
+            DispatchQueue.global().async() {
+                FeedParser(URL: url)?.parseAsync() { (result) in
+                    DispatchQueue.main.async {
+                        if let items = result.rssFeed?.items, !items.isEmpty {
+                            self.episodesDelegate.items = items
+                            self.episodesTableView.reloadData()
+                        }
 
+                    }
                 }
             }
         }

@@ -12,6 +12,8 @@ class GridViewController: UIViewController, OnItemClickedCallback {
     let SPACING = CGFloat(3)
     @IBOutlet weak var grid: UICollectionView!
     private let delegate: GridDelegate = GridDelegate()
+    var controller: UINavigationController? = nil
+    var singlePodcastController: SinglePodcastController? = nil
 
     func setResults(_ results: [Result]) {
         (grid?.dataSource as? GridDelegate)?.results = results
@@ -29,6 +31,8 @@ class GridViewController: UIViewController, OnItemClickedCallback {
         delegate.callback = self
         grid?.dataSource = delegate
         grid?.delegate = delegate
+
+
     }
 
     override func didReceiveMemoryWarning() {
