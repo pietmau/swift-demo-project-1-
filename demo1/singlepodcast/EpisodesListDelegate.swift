@@ -27,6 +27,7 @@ class EpisodesListDelegate: NSObject, UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         callback.onEpisodeSelected(items[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

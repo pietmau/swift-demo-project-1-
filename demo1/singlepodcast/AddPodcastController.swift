@@ -84,9 +84,12 @@ class SinglePodcastController: UIViewController, EpisodesListDlegateCallback {
     }
 
     func onEpisodeSelected(_ element: RSSFeedItem) {
-
+        let detailVc = self.storyboard!.instantiateViewController(withIdentifier: "EpisodeViewController") as! EpisodeViewController
+        self.navigationController!.pushViewController(detailVc, animated: true)
     }
 
+    func bar(){}
+    
     enum State {
         case LOADING
         case EMPTY
