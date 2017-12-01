@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -304,11 +305,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="NC0-Ta-VoB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE5-S8-euO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3394" y="43"/>
+            <point key="canvasLocation" x="3084" y="-73"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XNa-ve-o6s">
@@ -336,6 +338,7 @@
                             <constraint firstItem="OZ2-1k-wPE" firstAttribute="top" secondItem="ibU-Ab-hR0" secondAttribute="bottom" constant="5" id="bG1-dK-PK2"/>
                             <constraint firstAttribute="trailing" secondItem="OZ2-1k-wPE" secondAttribute="trailing" id="pE3-0g-4Dc"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="QBw-wF-bmw"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZk-LW-rWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

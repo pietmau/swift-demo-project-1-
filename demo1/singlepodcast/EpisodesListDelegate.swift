@@ -4,6 +4,11 @@ import FeedKit
 
 class EpisodesListDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
     var items: [RSSFeedItem] = []
+    let callback: EpisodesListDlegateCallback
+
+    init(callback: EpisodesListDlegateCallback) {
+        self.callback = callback
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -21,6 +26,11 @@ class EpisodesListDelegate: NSObject, UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        callback.onEpisodeSelected(items[indexPath.row])
     }
+
+}
+
+protocol EpisodesListDlegateCallback {
+    func onEpisodeSelected(_ element: RSSFeedItem)
 }

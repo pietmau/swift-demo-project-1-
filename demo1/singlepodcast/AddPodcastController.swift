@@ -7,13 +7,13 @@ import Foundation
 import UIKit
 import FeedKit
 
-class SinglePodcastController: UIViewController {
+class SinglePodcastController: UIViewController, EpisodesListDlegateCallback {
     @IBOutlet weak var activtyIndicator: UIActivityIndicatorView!
     @IBOutlet weak var brian: UIView!
     @IBOutlet weak var episodesTableView: UITableView!
     @IBOutlet weak var image: UIImageView!
     var podcast: Result? = nil
-    let episodesDelegate = EpisodesListDelegate()
+    var episodesDelegate: EpisodesListDelegate? = nil
 
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true)
@@ -21,6 +21,7 @@ class SinglePodcastController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        episodesDelegate = EpisodesListDelegate(callback: self)
         setViewState(State.LOADING)
         if let artworkUrl100 = podcast?.artworkUrl100 {
             image.kf.setImage(with: URL(string: artworkUrl100))
@@ -40,8 +41,8 @@ class SinglePodcastController: UIViewController {
         } else {
             self.setViewState(State.EMPTY)
         }
-        episodesTableView.delegate = episodesDelegate
-        episodesTableView.dataSource = episodesDelegate
+        episodesTableView.delegate = episodesDelegate!
+        episodesTableView.dataSource = episodesDelegate!
     }
 
     private func getData(data: Data) {
@@ -53,7 +54,7 @@ class SinglePodcastController: UIViewController {
     private func onResult(result: FeedKit.Result) {
         DispatchQueue.main.async {
             if let items = result.rssFeed?.items, !items.isEmpty {
-                self.episodesDelegate.items = items
+                self.episodesDelegate!.items = items
                 self.episodesTableView.reloadData()
                 self.setViewState(State.FULL)
                 return
@@ -80,6 +81,10 @@ class SinglePodcastController: UIViewController {
             brian.isHidden = true
             return
         }
+    }
+
+    func onEpisodeSelected(_ element: RSSFeedItem) {
+
     }
 
     enum State {
