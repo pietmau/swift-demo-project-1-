@@ -5,9 +5,11 @@ import FeedKit
 class EpisodesListDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
     var items: [RSSFeedItem] = []
     let callback: EpisodesListDlegateCallback
+    private var podcastUrl: URL? = nil
 
-    init(callback: EpisodesListDlegateCallback) {
+    init(callback: EpisodesListDlegateCallback, _  podcastUrl: URL?) {
         self.callback = callback
+        self.podcastUrl = podcastUrl
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -17,7 +19,7 @@ class EpisodesListDelegate: NSObject, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeItem",
                 for: indexPath) as! EpisodeCell
-        cell.bind(items[indexPath.row])
+        cell.bind(items[indexPath.row], podcastUrl)
         return cell
     }
 

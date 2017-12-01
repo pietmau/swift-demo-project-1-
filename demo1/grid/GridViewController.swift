@@ -31,8 +31,6 @@ class GridViewController: UIViewController, OnItemClickedCallback {
         delegate.callback = self
         grid?.dataSource = delegate
         grid?.delegate = delegate
-
-
     }
 
     override func didReceiveMemoryWarning() {

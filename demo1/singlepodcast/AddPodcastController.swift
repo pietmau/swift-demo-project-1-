@@ -21,28 +21,46 @@ class SinglePodcastController: UIViewController, EpisodesListDlegateCallback {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        episodesDelegate = EpisodesListDelegate(callback: self)
-        setViewState(State.LOADING)
-        if let artworkUrl100 = podcast?.artworkUrl100 {
-            image.kf.setImage(with: URL(string: artworkUrl100))
-        }
-        if let podcastTitle = podcast?.collectionName {
-            title = podcastTitle
-        }
+        prepareViews(podcastImageUrl: getPodcastImageUrl())
+        setDelegates(podcastImageUrl: getPodcastImageUrl())
+        getFeedAsync()
+    }
+
+    private func getFeedAsync() {
         if let urlString = podcast?.feedUrl, let url = URL(string: urlString) {
             URLSession.shared.dataTask(with: URLRequest(url: url), completionHandler:
             { (data, response, error) in
                 guard let data = data else {
-                    self.setViewState(State.EMPTY)
+                    self.setViewState(SinglePodcastViewState.EMPTY)
                     return
                 }
                 self.getData(data: data)
             }).resume()
         } else {
-            self.setViewState(State.EMPTY)
+            self.setViewState(SinglePodcastViewState.EMPTY)
         }
+    }
+
+    private func setDelegates(podcastImageUrl: URL?) {
+        episodesDelegate = EpisodesListDelegate(callback: self, podcastImageUrl)
         episodesTableView.delegate = episodesDelegate!
         episodesTableView.dataSource = episodesDelegate!
+    }
+
+    private func prepareViews(podcastImageUrl: URL?) {
+        setViewState(SinglePodcastViewState.LOADING)
+        image.kf.setImage(with: podcastImageUrl)
+        if let podcastTitle = podcast?.collectionName {
+            title = podcastTitle
+        }
+    }
+
+    private func getPodcastImageUrl() -> URL? {
+        var podcastImageUrl: URL? = nil
+        if let artworkUrl100 = podcast?.artworkUrl100 {
+            podcastImageUrl = URL(string: artworkUrl100)
+        }
+        return podcastImageUrl
     }
 
     private func getData(data: Data) {
@@ -56,26 +74,26 @@ class SinglePodcastController: UIViewController, EpisodesListDlegateCallback {
             if let items = result.rssFeed?.items, !items.isEmpty {
                 self.episodesDelegate!.items = items
                 self.episodesTableView.reloadData()
-                self.setViewState(State.FULL)
+                self.setViewState(SinglePodcastViewState.FULL)
                 return
             }
-            self.setViewState(State.EMPTY)
+            self.setViewState(SinglePodcastViewState.EMPTY)
         }
     }
 
-    private func setViewState(_ state: SinglePodcastController.State) {
+    private func setViewState(_ state: SinglePodcastViewState) {
         switch (state) {
-        case State.EMPTY:
+        case SinglePodcastViewState.EMPTY:
             activtyIndicator.isHidden = true
             episodesTableView.isHidden = true
             brian.isHidden = false
             return
-        case State.LOADING:
+        case SinglePodcastViewState.LOADING:
             activtyIndicator.isHidden = false
             episodesTableView.isHidden = true
             brian.isHidden = true
             return
-        case State.FULL:
+        case SinglePodcastViewState.FULL:
             activtyIndicator.isHidden = true
             episodesTableView.isHidden = false
             brian.isHidden = true
@@ -85,15 +103,10 @@ class SinglePodcastController: UIViewController, EpisodesListDlegateCallback {
 
     func onEpisodeSelected(_ element: RSSFeedItem) {
         let detailVc = self.storyboard!.instantiateViewController(withIdentifier: "EpisodeViewController") as! EpisodeViewController
+        detailVc.feedItem = element
+        if let imageUrl = podcast?.artworkUrl600 {
+            detailVc.imageUrl = getThumbnailUrl(element, URL(string: imageUrl))
+        }
         self.navigationController!.pushViewController(detailVc, animated: true)
-    }
-
-    func bar(){}
-    
-    enum State {
-        case LOADING
-        case EMPTY
-        case FULL
-
     }
 }

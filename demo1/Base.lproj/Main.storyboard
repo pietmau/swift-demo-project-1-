@@ -301,12 +301,14 @@
         <scene sceneID="uz6-51-6Ln">
             <objects>
                 <viewController storyboardIdentifier="EpisodeViewController" id="AGq-27-ACP" customClass="EpisodeViewController" customModule="demo1" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5BX-ZX-os4">
+                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chris" id="ade-NU-h4U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="NC0-Ta-VoB"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="1" green="0.2572754498" blue="0.1899693469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <connections>
+                        <outlet property="image" destination="ade-NU-h4U" id="g98-jF-p81"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE5-S8-euO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
