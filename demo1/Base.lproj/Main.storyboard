@@ -323,6 +323,7 @@
                         <outlet property="duration" destination="jkC-xt-FMA" id="q3u-q8-0i4"/>
                         <outlet property="image" destination="LjQ-GF-1A3" id="Z0V-ir-TYM"/>
                         <outlet property="length" destination="jJ4-Zf-hhp" id="bRJ-jE-fH2"/>
+                        <outlet property="playPauseButton" destination="dIV-E7-p7Q" id="lN3-B4-CW3"/>
                         <outlet property="slider" destination="tt5-A1-1Vq" id="gok-rT-wHO"/>
                     </connections>
                 </viewController>

@@ -16,6 +16,7 @@ class EpisodeViewController: UIViewController, PlayerView {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var length: UILabel!
+    @IBOutlet weak var playPauseButton: UIButton!
 
     var feedItem: RSSFeedItem? = nil
     var imageUrl: URL? = nil
@@ -43,6 +44,9 @@ class EpisodeViewController: UIViewController, PlayerView {
         self.duration.text = duration.description
         self.length.text = position.description
         slider.value = Float(progress)
+        if (playerIsPlaying()) {
+            setButtonPlaying()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,8 +54,28 @@ class EpisodeViewController: UIViewController, PlayerView {
     }
 
     @IBAction func onPlayPauseClicked(_ sender: UIButton) {
-        if(player?.isPlaying == true){
+        if playerIsPlaying() {
+            pause()
             return
         }
+        play()
+    }
+
+    private func play() {
+        player?.play()
+        setButtonPlaying()
+    }
+
+    private func pause() {
+        player?.pause()
+        playPauseButton.setImage(#imageLiteral(resourceName:"play-256"), for: .normal)
+    }
+
+    private func playerIsPlaying() -> Bool {
+        return player?.isPlaying == true
+    }
+
+    private func setButtonPlaying() {
+        playPauseButton.setImage(#imageLiteral(resourceName:"white-pause-512"), for: .normal)
     }
 }
