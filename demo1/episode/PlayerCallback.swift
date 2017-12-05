@@ -5,12 +5,7 @@
 
 import Foundation
 
-protocol Player {
-    var isPlaying: Bool { get }
+protocol PlayerCallback {
 
-    func play()
-
-    func pause()
-
-    func stop()
+    func onTimeUpdate(duration: TimeLabel, position: TimeLabel, progress: Double)
 }

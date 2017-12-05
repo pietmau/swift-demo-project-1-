@@ -5,12 +5,5 @@
 
 import Foundation
 
-protocol Player {
-    var isPlaying: Bool { get }
-
-    func play()
-
-    func pause()
-
-    func stop()
+protocol PlayerView: PlayerCallback {
 }

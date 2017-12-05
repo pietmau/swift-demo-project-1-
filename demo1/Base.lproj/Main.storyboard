@@ -264,7 +264,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DcV-2X-DgB">
                                 <rect key="frame" x="0.0" y="542" width="375" height="125"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tt5-A1-1Vq">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="tt5-A1-1Vq">
                                         <rect key="frame" x="18" y="20" width="339" height="31"/>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIV-E7-p7Q">
@@ -274,15 +274,18 @@
                                             <constraint firstAttribute="height" constant="60" id="Ulo-d9-3n0"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="play-256"/>
+                                        <connections>
+                                            <action selector="onPlayPauseClicked:" destination="lYQ-Qx-x1w" eventType="touchUpInside" id="p4o-5c-KYu"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJ4-Zf-hhp">
-                                        <rect key="frame" x="20" y="8" width="32" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJ4-Zf-hhp">
+                                        <rect key="frame" x="20" y="8" width="41.5" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkC-xt-FMA">
-                                        <rect key="frame" x="323" y="8" width="32" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkC-xt-FMA">
+                                        <rect key="frame" x="313.5" y="8" width="41.5" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -317,7 +320,10 @@
                         <viewLayoutGuide key="safeArea" id="ECY-qq-6dX"/>
                     </view>
                     <connections>
+                        <outlet property="duration" destination="jkC-xt-FMA" id="q3u-q8-0i4"/>
                         <outlet property="image" destination="LjQ-GF-1A3" id="Z0V-ir-TYM"/>
+                        <outlet property="length" destination="jJ4-Zf-hhp" id="bRJ-jE-fH2"/>
+                        <outlet property="slider" destination="tt5-A1-1Vq" id="gok-rT-wHO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uR7-Z3-RiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
