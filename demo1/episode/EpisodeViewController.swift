@@ -14,6 +14,7 @@ import AVKit
 class EpisodeViewController: UIViewController, PlayerView {
     @IBOutlet var image: UIImageView!
     @IBOutlet weak var slider: UISlider!
+
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var length: UILabel!
     @IBOutlet weak var playPauseButton: UIButton!
@@ -27,8 +28,8 @@ class EpisodeViewController: UIViewController, PlayerView {
         if let imageUrl = imageUrl {
             image.kf.setImage(with: imageUrl)
         }
-        if let episodeTitel = feedItem?.title {
-            title = episodeTitel
+        if let episodeTitle = feedItem?.title {
+            title = episodeTitle
         }
         initPlayer()
     }
@@ -49,7 +50,7 @@ class EpisodeViewController: UIViewController, PlayerView {
         }
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         player?.stop()
     }
 
@@ -77,5 +78,9 @@ class EpisodeViewController: UIViewController, PlayerView {
 
     private func setButtonPlaying() {
         playPauseButton.setImage(#imageLiteral(resourceName:"white-pause-512"), for: .normal)
+    }
+
+    @IBAction func onSlide(_ sender: UISlider) {
+
     }
 }
