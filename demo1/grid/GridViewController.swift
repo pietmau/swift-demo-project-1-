@@ -15,7 +15,7 @@ class GridViewController: UIViewController, OnItemClickedCallback {
     var controller: UINavigationController? = nil
     var singlePodcastController: SinglePodcastController? = nil
 
-    func setResults(_ results: [Result]) {
+    func setResults(_ results: [Podcast]) {
         (grid?.dataSource as? GridDelegate)?.results = results
         grid.reloadData()
     }
@@ -37,7 +37,7 @@ class GridViewController: UIViewController, OnItemClickedCallback {
         super.didReceiveMemoryWarning()
     }
 
-    func onItemClicked(_ element: Result) {
+    func onItemClicked(_ element: Podcast) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "Navigation") as! UINavigationController
         let singlePodcastController = controller.childViewControllers[0] as! SinglePodcastController
         singlePodcastController.podcast = element

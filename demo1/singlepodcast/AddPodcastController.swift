@@ -7,17 +7,22 @@ import Foundation
 import UIKit
 import FeedKit
 
+
 class SinglePodcastController: UIViewController, EpisodesListDlegateCallback {
     @IBOutlet weak var activtyIndicator: UIActivityIndicatorView!
     @IBOutlet weak var brian: UIView!
     @IBOutlet weak var episodesTableView: UITableView!
     @IBOutlet weak var image: UIImageView!
-    var podcast: Result? = nil
+    var podcast: Podcast? = nil
     var episodesDelegate: EpisodesListDelegate? = nil
+    let saver = DataManagerCoreData.INSTANCE
 
     @IBAction func onAddClicked(_ sender: Any) {
+        let feed = RssFeedCoreData(entity: RssFeedCoreData.entity(), insertInto: saver.context)
+        feed.title = podcast?.trackName
+        saver.save()
     }
-    
+
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true)
     }

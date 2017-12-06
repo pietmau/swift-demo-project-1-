@@ -14,7 +14,7 @@ import Foundation
 
 public class SearchResult {
 	public var resultCount : Int?
-	public var results : Array<Result>?
+	public var results : Array<Podcast>?
 
 /**
     Returns an array of models based on given dictionary.
@@ -49,7 +49,7 @@ public class SearchResult {
 	required public init?(dictionary: NSDictionary) {
 
 		resultCount = dictionary["resultCount"] as? Int
-		if (dictionary["results"] != nil) { results = Result.modelsFromDictionaryArray(array: dictionary["results"] as! NSArray) }
+		if (dictionary["results"] != nil) { results = Podcast.modelsFromDictionaryArray(array: dictionary["results"] as! NSArray) }
 	}
 
 		

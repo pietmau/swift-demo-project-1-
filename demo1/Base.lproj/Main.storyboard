@@ -392,14 +392,14 @@
             <objects>
                 <viewController id="nZn-55-NNo" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Es-yX-W0f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="438"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="522"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="brian" translatesAutoresizingMaskIntoConstraints="NO" id="ibU-Ab-hR0">
-                                <rect key="frame" x="77.5" y="61" width="220" height="316"/>
+                                <rect key="frame" x="77.5" y="103" width="220" height="316"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Nothing to see here..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZ2-1k-wPE">
-                                <rect key="frame" x="0.0" y="382" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="424" width="375" height="30"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -438,11 +438,11 @@
             </objects>
             <point key="canvasLocation" x="-1502" y="-204"/>
         </scene>
-        <!--View Controller-->
+        <!--Subscribed Controller-->
         <scene sceneID="t37-0I-qiq">
             <objects>
-                <viewController id="Saq-jq-mh9" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ATt-wZ-e6L">
+                <viewController id="Saq-jq-mh9" customClass="SubscribedController" customModule="demo1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ATt-wZ-e6L" customClass="Su">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -461,6 +461,6 @@
         <image name="play-256" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dCE-HV-6fm"/>
+        <segue reference="787-oN-4zD"/>
     </inferredMetricsTieBreakers>
 </document>
