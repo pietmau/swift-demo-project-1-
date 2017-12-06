@@ -29,6 +29,7 @@
 		93EB05052B7F35CC9A73F35C /* Pods_demo1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F30876E4714F31DA64A36B8 /* Pods_demo1Tests.framework */; };
 		9C0CD3571FCD8B2800D4F986 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CD3561FCD8B2800D4F986 /* GridViewController.swift */; };
 		9C3A32931FD19DC7002EC891 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A32921FD19DC7002EC891 /* EpisodeViewController.swift */; };
+		9C3A32981FD82B77002EC891 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A32961FD82B77002EC891 /* Model.xcdatamodeld */; };
 		9C4A242E1FC8577D00810A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4A242D1FC8577D00810A61 /* AppDelegate.swift */; };
 		9C4A24331FC8577D00810A61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C4A24311FC8577D00810A61 /* Main.storyboard */; };
 		9C4A24351FC8577D00810A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C4A24341FC8577D00810A61 /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 		6F30876E4714F31DA64A36B8 /* Pods_demo1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demo1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0CD3561FCD8B2800D4F986 /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		9C3A32921FD19DC7002EC891 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
+		9C3A32971FD82B77002EC891 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9C4A242A1FC8577D00810A61 /* demo1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C4A242D1FC8577D00810A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C4A24321FC8577D00810A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		9C4A24211FC8577D00810A61 = {
 			isa = PBXGroup;
 			children = (
+				9C3A32961FD82B77002EC891 /* Model.xcdatamodeld */,
 				9C4A242C1FC8577D00810A61 /* demo1 */,
 				9C4A24411FC8577D00810A61 /* demo1Tests */,
 				9C4A244C1FC8577E00810A61 /* demo1UITests */,
@@ -573,6 +576,7 @@
 				39672B7AAA175E9C06BF861C /* GridDelegate.swift in Sources */,
 				39672428B7E9703E3F2731DD /* MainController.swift in Sources */,
 				9C3A32931FD19DC7002EC891 /* EpisodeViewController.swift in Sources */,
+				9C3A32981FD82B77002EC891 /* Model.xcdatamodeld in Sources */,
 				39672DB8A3115225CF574EF5 /* MainPresenter.swift in Sources */,
 				3967215DF6368D20C1C6D19F /* MainView.swift in Sources */,
 				39672EF22709B07EE15BD96E /* EpisodesListDelegate.swift in Sources */,
@@ -886,6 +890,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9C3A32961FD82B77002EC891 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9C3A32971FD82B77002EC891 /* Model.xcdatamodel */,
+			);
+			currentVersion = 9C3A32971FD82B77002EC891 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9C4A24221FC8577D00810A61 /* Project object */;
 }

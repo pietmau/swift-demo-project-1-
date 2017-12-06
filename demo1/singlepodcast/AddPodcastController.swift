@@ -15,6 +15,9 @@ class SinglePodcastController: UIViewController, EpisodesListDlegateCallback {
     var podcast: Result? = nil
     var episodesDelegate: EpisodesListDelegate? = nil
 
+    @IBAction func onAddClicked(_ sender: Any) {
+    }
+    
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true)
     }
@@ -81,7 +84,7 @@ class SinglePodcastController: UIViewController, EpisodesListDlegateCallback {
         }
     }
 
-    private func setViewState(_ state: SinglePodcastViewState) {
+    func setViewState(_ state: SinglePodcastViewState) {
         switch (state) {
         case SinglePodcastViewState.EMPTY:
             activtyIndicator.isHidden = true

@@ -239,6 +239,11 @@
                                 <action selector="close:" destination="raX-HO-Cew" id="3Pp-EO-bUD"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lqs-6P-Hzw">
+                            <connections>
+                                <action selector="onAddClicked:" destination="raX-HO-Cew" id="BYa-wi-UuO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activtyIndicator" destination="Dct-cF-aiK" id="MbB-3q-LyZ"/>
@@ -440,7 +445,7 @@
                     <view key="view" contentMode="scaleToFill" id="ATt-wZ-e6L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="xUK-WA-3sS"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="zPT-eg-DaR"/>
