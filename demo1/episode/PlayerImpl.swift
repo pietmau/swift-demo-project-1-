@@ -29,6 +29,13 @@ class PlayerImpl: NSObject, Player {
         in
             self.calculateAndSetDurationAndProgress()
         })
+        NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(note:)),
+                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: audioPlayer.currentItem)
+    }
+
+    @objc
+    func playerDidFinishPlaying(note: NSNotification) {
+        print("Video Finished")
     }
 
     private func calculateAndSetDurationAndProgress() {
