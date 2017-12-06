@@ -13,4 +13,6 @@ protocol Player {
     func pause()
 
     func stop()
+
+    func seekTo(_ value: Float)
 }

@@ -81,6 +81,6 @@ class EpisodeViewController: UIViewController, PlayerView {
     }
 
     @IBAction func onSlide(_ sender: UISlider) {
-
+        player?.seekTo(sender.value)
     }
 }

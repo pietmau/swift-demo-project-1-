@@ -61,5 +61,13 @@ class PlayerImpl: NSObject, Player {
         }
         audioPlayer.replaceCurrentItem(with: nil)
     }
+
+    func seekTo(_ value: Float) {
+        if var duration = self.audioPlayer.currentItem?.duration.seconds {
+            duration = duration * Double(value) / 100
+            let time = CMTime(seconds: duration, preferredTimescale: 1)
+            audioPlayer.seek(to: time)
+        }
+    }
 }
 
