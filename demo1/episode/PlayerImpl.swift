@@ -8,16 +8,17 @@ import AVFoundation
 
 class PlayerImpl: NSObject, Player {
     private let audioPlayer: AVPlayer
-    private var view: PlayerView?
+    private var callback: PlayerCallback?
     private var observer: Any? = nil
     var isPlaying: Bool {
         get {
             return (audioPlayer.rate != 0 && audioPlayer.error == nil)
         }
     }
+    var hasEnded: Bool = false
 
-    init(url: URL, view: PlayerView) {
-        self.view = view
+    init(url: URL, callback: PlayerCallback) {
+        self.callback = callback
         audioPlayer = AVPlayer(url: url)
         super.init()
         addCallback()
@@ -25,8 +26,7 @@ class PlayerImpl: NSObject, Player {
 
     private func addCallback() {
         let interval = CMTimeMake(1, 1)
-        observer = audioPlayer.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { time
-        in
+        observer = audioPlayer.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { _ in
             self.calculateAndSetDurationAndProgress()
         })
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(note:)),
@@ -35,7 +35,8 @@ class PlayerImpl: NSObject, Player {
 
     @objc
     func playerDidFinishPlaying(note: NSNotification) {
-        print("Video Finished")
+        hasEnded = true
+        callback?.onPlaybackEnded()
     }
 
     private func calculateAndSetDurationAndProgress() {
@@ -44,7 +45,7 @@ class PlayerImpl: NSObject, Player {
         let durationLabel = TimeLabel(duration)
         let currrentTimeLabel = TimeLabel(currrentTime)
         let currentTimeInPercent = calculatePercentage(duration, currrentTime)
-        view?.onTimeUpdate(duration: durationLabel, position: currrentTimeLabel, progress: currentTimeInPercent)
+        callback?.onTimeUpdate(duration: durationLabel, position: currrentTimeLabel, progress: currentTimeInPercent)
     }
 
     private func calculatePercentage(_ duration: Double?, _ time: Double?) -> Double {
@@ -55,6 +56,7 @@ class PlayerImpl: NSObject, Player {
     }
 
     func play() {
+        hasEnded = false
         audioPlayer.play()
     }
 
@@ -75,6 +77,11 @@ class PlayerImpl: NSObject, Player {
             let time = CMTime(seconds: duration, preferredTimescale: 1)
             audioPlayer.seek(to: time)
         }
+    }
+
+    func restart() {
+        seekTo(0)
+        audioPlayer.play()
     }
 }
 

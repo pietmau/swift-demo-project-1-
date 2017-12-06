@@ -8,6 +8,8 @@ import Foundation
 protocol Player {
     var isPlaying: Bool { get }
 
+    var hasEnded: Bool { get }
+
     func play()
 
     func pause()
@@ -15,4 +17,7 @@ protocol Player {
     func stop()
 
     func seekTo(_ value: Float)
+
+    func restart()
+
 }

@@ -36,7 +36,7 @@ class EpisodeViewController: UIViewController, PlayerView {
 
     private func initPlayer() {
         if let feedUrl = feedItem?.enclosure?.attributes?.url, let audioUrl = URL(string: feedUrl) {
-            player = PlayerImpl(url: audioUrl, view: self)
+            player = PlayerImpl(url: audioUrl, callback: self)
             player?.play()
         }
     }
@@ -51,7 +51,7 @@ class EpisodeViewController: UIViewController, PlayerView {
     }
 
     override func viewDidDisappear(_ animated: Bool) {
-        player?.stop()
+        //player?.stop()
     }
 
     @IBAction func onPlayPauseClicked(_ sender: UIButton) {
@@ -59,7 +59,16 @@ class EpisodeViewController: UIViewController, PlayerView {
             pause()
             return
         }
+        if (player?.hasEnded == true) {
+            restart()
+            return
+        }
         play()
+    }
+
+    private func restart() {
+        player?.restart()
+        setButtonPlaying()
     }
 
     private func play() {
@@ -82,5 +91,9 @@ class EpisodeViewController: UIViewController, PlayerView {
 
     @IBAction func onSlide(_ sender: UISlider) {
         player?.seekTo(sender.value)
+    }
+
+    func onPlaybackEnded() {
+        playPauseButton.setImage(#imageLiteral(resourceName:"restart"), for: .normal)
     }
 }

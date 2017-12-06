@@ -340,6 +340,11 @@
 					9C4A24291FC8577D00810A61 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					9C4A243D1FC8577D00810A61 = {
 						CreatedOnToolsVersion = 9.0;

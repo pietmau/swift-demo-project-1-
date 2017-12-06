@@ -8,4 +8,5 @@ import Foundation
 protocol PlayerCallback {
 
     func onTimeUpdate(duration: TimeLabel, position: TimeLabel, progress: Double)
+    func onPlaybackEnded()
 }
