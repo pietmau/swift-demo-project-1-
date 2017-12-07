@@ -20,17 +20,20 @@ class SubscribedController: UIViewController, OnItemClickedCallback {
         grid.reloadData()
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate.callback = self
+        grid?.dataSource = delegate
+        grid?.delegate = delegate
+    }
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         print("viewWillLayoutSubviews")
         grid.collectionViewLayout.invalidateLayout()
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        delegate.callback = self
-        grid?.dataSource = delegate
-        grid?.delegate = delegate
+    override func viewWillAppear(_ animated: Bool) {
         setResults(dataManager.loadSubscribedFeeds() as! [Podcast])
     }
 
