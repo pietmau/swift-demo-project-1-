@@ -5,6 +5,7 @@
         <attribute name="artworkUrl600" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="collectionName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="feedUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="trackName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RSSFeedItemCoreData" inverseName="feed" inverseEntity="RSSFeedItemCoreData" syncable="YES"/>
     </entity>
@@ -13,7 +14,7 @@
         <relationship name="feed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PodcastCoreData" inverseName="items" inverseEntity="PodcastCoreData" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PodcastCoreData" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="PodcastCoreData" positionX="-54" positionY="-9" width="128" height="150"/>
         <element name="RSSFeedItemCoreData" positionX="-36" positionY="18" width="128" height="75"/>
     </elements>
 </model>

@@ -34,7 +34,7 @@ class SubscribedController: UIViewController, OnItemClickedCallback {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        setResults(dataManager.loadSubscribedFeeds() as! [Podcast])
+        setResults(dataManager.loadSubscribedFeeds() as [Podcast])
     }
 
     override func didReceiveMemoryWarning() {

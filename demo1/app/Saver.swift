@@ -36,6 +36,16 @@ class DataManagerCoreData: DataManager {
         }
     }
 
+    func savePodcast(_ podcast: Podcast?) {
+        if (podcast == nil) {
+            return
+        }
+        let feed = PodcastCoreData(entity: PodcastCoreData.entity(), insertInto: context)
+        feed.trackName = podcast?.trackName
+        feed.artworkUrl100 = podcast?.artworkUrl100
+
+    }
+
     func loadSubscribedFeeds() -> [PodcastCoreData] {
         var result: [PodcastCoreData] = []
         do {

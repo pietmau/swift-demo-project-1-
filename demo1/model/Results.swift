@@ -16,7 +16,7 @@ public class PodcastImpl: Podcast {
     public var wrapperType: String?
     public var kind: String?
     public var collectionId: Int?
-    public var trackId: Int?
+    public var trackId: Int64
     public var artistName: String?
     public var collectionName: String?
     public var trackName: String?
@@ -79,7 +79,7 @@ public class PodcastImpl: Podcast {
         wrapperType = dictionary["wrapperType"] as? String
         kind = dictionary["kind"] as? String
         collectionId = dictionary["collectionId"] as? Int
-        trackId = dictionary["trackId"] as? Int
+        trackId = (dictionary["trackId"] != nil) ? (dictionary["trackId"] as! Int64) : 0
         artistName = dictionary["artistName"] as? String
         collectionName = dictionary["collectionName"] as? String
         trackName = dictionary["trackName"] as? String

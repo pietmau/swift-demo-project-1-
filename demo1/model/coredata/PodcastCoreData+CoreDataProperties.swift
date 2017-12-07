@@ -22,6 +22,7 @@ extension PodcastCoreData {
     @NSManaged public var collectionName: String?
     @NSManaged public var feedUrl: String?
     @NSManaged public var trackName: String?
+    @NSManaged public var trackId: Int64
     @NSManaged public var items: NSSet?
 
 }

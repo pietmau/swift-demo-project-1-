@@ -11,4 +11,5 @@ protocol Podcast {
     var feedUrl: String? { get }
     var collectionName: String? { get }
     var artworkUrl600: String? { get }
+    var trackId: Int64 {get }
 }
