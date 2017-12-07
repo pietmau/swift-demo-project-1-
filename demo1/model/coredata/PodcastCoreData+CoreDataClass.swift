@@ -1,5 +1,5 @@
 //
-//  RssFeedCoreData+CoreDataClass.swift
+//  PodcastCoreData+CoreDataClass.swift
 //  demo1
 //
 //  Created by Maurizio Pietrantuono on 07/12/2017.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(RssFeedCoreData)
-public class RssFeedCoreData: NSManagedObject {
+@objc(PodcastCoreData)
+public class PodcastCoreData: NSManagedObject {
 
 }

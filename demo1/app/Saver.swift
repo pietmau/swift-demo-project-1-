@@ -36,10 +36,10 @@ class DataManagerCoreData: DataManager {
         }
     }
 
-    func loadSubscribedFeeds() -> [RssFeedCoreData] {
-        var result: [RssFeedCoreData] = []
+    func loadSubscribedFeeds() -> [PodcastCoreData] {
+        var result: [PodcastCoreData] = []
         do {
-            result = try context.fetch(RssFeedCoreData.fetchRequest())
+            result = try context.fetch(PodcastCoreData.fetchRequest())
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }

@@ -18,6 +18,6 @@ extension RSSFeedItemCoreData {
     }
 
     @NSManaged public var title: String?
-    @NSManaged public var feed: RssFeedCoreData?
+    @NSManaged public var feed: PodcastCoreData?
 
 }

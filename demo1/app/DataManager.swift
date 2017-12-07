@@ -8,5 +8,5 @@ import Foundation
 protocol DataManager {
     func save()
 
-    func loadSubscribedFeeds() -> [RssFeedCoreData]
+    func loadSubscribedFeeds() -> [PodcastCoreData]
 }

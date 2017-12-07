@@ -8,7 +8,7 @@ import UIKit
 
 class SubscribedController: UIViewController {
     let dataManager = DataManagerCoreData.INSTANCE
-    var feeds: [RssFeedCoreData]? = nil
+    var feeds: [PodcastCoreData]? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
