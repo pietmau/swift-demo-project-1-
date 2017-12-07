@@ -20,6 +20,7 @@ class SinglePodcastController: UIViewController, EpisodesListDlegateCallback {
     @IBAction func onAddClicked(_ sender: Any) {
         let feed = PodcastCoreData(entity: PodcastCoreData.entity(), insertInto: saver.context)
         feed.trackName = podcast?.trackName
+        feed.artworkUrl100 = podcast?.artworkUrl100
         saver.save()
     }
 

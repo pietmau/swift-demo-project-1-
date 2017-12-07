@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 @objc(PodcastCoreData)
-public class PodcastCoreData: NSManagedObject {
+public class PodcastCoreData: NSManagedObject, Podcast {
 
 }

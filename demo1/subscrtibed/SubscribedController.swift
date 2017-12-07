@@ -6,17 +6,39 @@
 import Foundation
 import UIKit
 
-class SubscribedController: UIViewController {
+class SubscribedController: UIViewController, OnItemClickedCallback {
     let dataManager = DataManagerCoreData.INSTANCE
     var feeds: [PodcastCoreData]? = nil
+    let SPACING = CGFloat(3)
+    @IBOutlet weak var grid: UICollectionView!
+    private let delegate: GridDelegate = GridDelegate()
+    var controller: UINavigationController? = nil
+    var singlePodcastController: SinglePodcastController? = nil
+
+    func setResults(_ results: [Podcast]) {
+        (grid?.dataSource as? GridDelegate)?.results = results
+        grid.reloadData()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print("viewWillLayoutSubviews")
+        grid.collectionViewLayout.invalidateLayout()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        feeds = dataManager.loadSubscribedFeeds()
-        foo()
+        delegate.callback = self
+        grid?.dataSource = delegate
+        grid?.delegate = delegate
+        setResults(dataManager.loadSubscribedFeeds() as! [Podcast])
     }
 
-    private func foo() {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    func onItemClicked(_ podcast: Podcast) {
 
     }
 }
