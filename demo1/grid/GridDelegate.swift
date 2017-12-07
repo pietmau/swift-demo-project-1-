@@ -24,5 +24,5 @@ class GridDelegate: UIViewController, UICollectionViewDelegate, UICollectionView
 }
 
 protocol OnItemClickedCallback {
-    func onItemClicked(_ element: Podcast)
+    func onItemClicked(_ podcast: Podcast)
 }

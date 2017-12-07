@@ -37,10 +37,10 @@ class GridViewController: UIViewController, OnItemClickedCallback {
         super.didReceiveMemoryWarning()
     }
 
-    func onItemClicked(_ element: Podcast) {
+    func onItemClicked(_ podcast: Podcast) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "Navigation") as! UINavigationController
         let singlePodcastController = controller.childViewControllers[0] as! SinglePodcastController
-        singlePodcastController.podcast = element
+        singlePodcastController.podcast = podcast
         show(controller, sender: self)
     }
 }

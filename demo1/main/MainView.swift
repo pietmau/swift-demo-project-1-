@@ -6,6 +6,6 @@
 import Foundation
 
 protocol MainView {
-    func setResults(_ results: [Podcast])
+    func setResults(_ results: [PodcastImpl])
     func hideBrian()
 }

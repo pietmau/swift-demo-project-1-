@@ -11,9 +11,9 @@ class GridCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     var serchresullt: Podcast? = nil
 
-    func setResult(_ element: Podcast) {
-        self.serchresullt = element
-        if let url60 = element.artworkUrl100 {
+    func setResult(_ podcast: Podcast) {
+        self.serchresullt = podcast
+        if let url60 = podcast.artworkUrl100 {
             let url = URL(string: url60)
             image.kf.setImage(with: url)
         }
