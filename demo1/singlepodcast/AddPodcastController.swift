@@ -19,7 +19,7 @@ class SinglePodcastController: UIViewController, EpisodesListDlegateCallback {
 
     @IBAction func onAddClicked(_ sender: Any) {
         let feed = RssFeedCoreData(entity: RssFeedCoreData.entity(), insertInto: saver.context)
-        feed.title = podcast?.trackName
+        feed.trackName = podcast?.trackName
         saver.save()
     }
 

@@ -17,8 +17,11 @@ extension RssFeedCoreData {
         return NSFetchRequest<RssFeedCoreData>(entityName: "RssFeedCoreData")
     }
 
-    @NSManaged public var title: String?
-    @NSManaged public var imageUrl: String?
+    @NSManaged public var artworkUrl100: String?
+    @NSManaged public var trackName: String?
+    @NSManaged public var feedUrl: String?
+    @NSManaged public var collectionName: String?
+    @NSManaged public var artworkUrl600: String?
     @NSManaged public var items: NSSet?
 
 }
