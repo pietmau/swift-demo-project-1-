@@ -18,6 +18,7 @@ extension RssFeedCoreData {
     }
 
     @NSManaged public var title: String?
+    @NSManaged public var imageUrl: String?
     @NSManaged public var items: NSSet?
 
 }
