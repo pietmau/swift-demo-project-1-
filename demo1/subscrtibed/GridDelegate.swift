@@ -1,10 +1,11 @@
 import Foundation
 import UIKit
+import CoreData
 
-class GridDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
+class SubscribedGridDelegate: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     let SPACING = CGFloat(3)
     let CELL_NAME = "RearchResultCell"
-    var results: [Podcast] = []
+    var results: NSFetchedResultsController<Podcast>? = nil
     var callback: OnItemClickedCallback? = nil
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -23,6 +24,3 @@ class GridDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
-protocol OnItemClickedCallback {
-    func onItemClicked(_ podcast: Podcast)
-}
