@@ -20,6 +20,7 @@ class PlayerImpl: NSObject, Player {
     init(url: URL, callback: PlayerCallback) {
         self.callback = callback
         audioPlayer = AVPlayer(url: url)
+        AVPlayerView
         super.init()
         addCallback()
     }

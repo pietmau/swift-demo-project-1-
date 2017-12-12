@@ -51,7 +51,7 @@ class EpisodeViewController: UIViewController, PlayerView {
     }
 
     override func viewDidDisappear(_ animated: Bool) {
-        player?.stop()
+        //player?.stop()
     }
 
     @IBAction func onPlayPauseClicked(_ sender: UIButton) {
