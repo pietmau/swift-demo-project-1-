@@ -19,6 +19,7 @@
 		39672B7AAA175E9C06BF861C /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672BDCFB72394BEB893875 /* GridDelegate.swift */; };
 		39672B7C65516BE489A7E58D /* GridDelegate copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3967220D55D2692AEDEDD628 /* GridDelegate copy.swift */; };
 		39672BD6BC04F1204DE4A8EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396724E296C6DF0CC224EF84 /* AppDelegate.swift */; };
+		39672C3CABC05C5415C7F7CE /* StateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672AFE5D669C36427BBF16 /* StateCalculator.swift */; };
 		39672C59DE6FDAD468AC80AC /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672F9E4AC76735E0BBE711 /* TimeLabel.swift */; };
 		39672D119ABDE1AB12250B2F /* PlayerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39672D39F4AA128F7B3A7F37 /* PlayerImpl.swift */; };
 		39672D462676DB94D29E4416 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3967277D52244A58CE80CA86 /* SearchResult.swift */; };
@@ -87,6 +88,7 @@
 		396728F180641FDE0688144A /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		396729E0B2E2A37C4A7C11E7 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		39672A01126F73DACB9D16F2 /* ViewStatusCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStatusCreator.swift; sourceTree = "<group>"; };
+		39672AFE5D669C36427BBF16 /* StateCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateCalculator.swift; sourceTree = "<group>"; };
 		39672B0404A9F0F8511A6297 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		39672BDCFB72394BEB893875 /* GridDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridDelegate.swift; sourceTree = "<group>"; };
 		39672D39F4AA128F7B3A7F37 /* PlayerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerImpl.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				39672B0404A9F0F8511A6297 /* PlayerView.swift */,
 				39672F9E4AC76735E0BBE711 /* TimeLabel.swift */,
 				39672A01126F73DACB9D16F2 /* ViewStatusCreator.swift */,
+				39672AFE5D669C36427BBF16 /* StateCalculator.swift */,
 			);
 			path = episode;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				396726CF4CCE6186D1A333D1 /* Podcast.swift in Sources */,
 				39672B7C65516BE489A7E58D /* GridDelegate copy.swift in Sources */,
 				39672FBD0E2DC9634C86BCB1 /* ViewStatusCreator.swift in Sources */,
+				39672C3CABC05C5415C7F7CE /* StateCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

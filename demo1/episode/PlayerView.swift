@@ -13,5 +13,5 @@ protocol PlayerView {
 
     func onTimeUpdate(progress: ProgressInfo)
 
-    func onBuffering()
+    func hidePleaseWait(hide: Bool)
 }

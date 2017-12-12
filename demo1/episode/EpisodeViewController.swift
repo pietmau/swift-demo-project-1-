@@ -14,6 +14,7 @@ import AVKit
 class EpisodeViewController: UIViewController, PlayerView {
     @IBOutlet var image: UIImageView!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var pleaseWait: UIActivityIndicatorView!
 
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var length: UILabel!
@@ -31,6 +32,7 @@ class EpisodeViewController: UIViewController, PlayerView {
         if let episodeTitle = feedItem?.title {
             title = episodeTitle
         }
+        pleaseWait.startAnimating()
         initPlayer()
     }
 
@@ -59,7 +61,6 @@ class EpisodeViewController: UIViewController, PlayerView {
         playPauseButton.setImage(#imageLiteral(resourceName:"play-256"), for: .normal)
     }
 
-
     public func showPauseButton() {
         playPauseButton.setImage(#imageLiteral(resourceName:"white-pause-512"), for: .normal)
     }
@@ -68,7 +69,9 @@ class EpisodeViewController: UIViewController, PlayerView {
         playPauseButton.setImage(#imageLiteral(resourceName:"restart"), for: .normal)
     }
 
-    public func onBuffering(){
-
+    public func hidePleaseWait(hide: Bool) {
+        pleaseWait.isHidden = hide
     }
+
+
 }

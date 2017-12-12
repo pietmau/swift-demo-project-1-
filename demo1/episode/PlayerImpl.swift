@@ -1,95 +1,58 @@
 import Foundation
 import AVFoundation
 
-class PlayerImpl: NSObject, Player {
-    private let audioPlayer: AVPlayer
+class PlayerImpl: NSObject, Player, PlayeStateCallback {
+    let audioPlayer: AVPlayer
     private var view: PlayerView?
     private var observer: Any? = nil
     private let progressInfoCreator: ProgressInfoCreator = ProgressInfoCreator()
-    private var hasEnded: Bool = false
+    private let stateCalculator: StateCalculator = StateCalculator()
 
     init(url: URL, view: PlayerView) {
         self.view = view
         audioPlayer = AVPlayer(url: url)
         super.init()
+        stateCalculator.setCallback(self)
         addCallback()
     }
 
     private func addCallback() {
-        let interval = CMTimeMake(1, 1)
-        observer = audioPlayer.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { _ in
+        observer = audioPlayer.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: DispatchQueue.main, using: { _ in
             self.calculateState()
         })
         NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(note:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: audioPlayer.currentItem)
     }
 
     func onPlayPauseClicked() {
-        if isPlaying() {
-            pause()
-            return
-        }
-        if (hasEnded == true) {
-            restart()
-            return
-        }
-        play()
-    }
-
-    private func isPlaying() -> Bool {
-        return audioPlayer.rate == 1 && audioPlayer.error == nil
+        stateCalculator.onPlayPauseClicked()
     }
 
     @objc
     func playerDidFinishPlaying(note: NSNotification) {
-        hasEnded = true
+        stateCalculator.playerDidFinishPlaying()
+        view?.hidePleaseWait(hide: true)
         view?.showRestart()
     }
 
     private func calculateState() {
-        if (audioPlayer.rate != 0.0) {
-            onPlayerPlaying()
-            return
-        }
-        if (audioPlayer.rate == 0.0) {
-            onPlayerNotPlaying()
-            return
-        }
+        stateCalculator.calculateState()
     }
 
-    private func onPlayerNotPlaying() {
-        if (audioPlayer.error == nil) {
-            onPause()
-            return
-        }
-        onError()
+    internal func onError() {
+        view?.hidePleaseWait(hide: true)
     }
 
-    private func onError() {
-    }
-
-    private func onPause() {
+    internal func onPause() {
+        view?.hidePleaseWait(hide: true)
         view?.showPlay()
     }
 
-    private func onPlayerPlaying() {
-        hasEnded = false
-        if let item = self.audioPlayer.currentItem {
-            if (item.isPlaybackLikelyToKeepUp) {
-                onActuallyPlaying(item)
-                return
-            }
-            if (item.isPlaybackBufferEmpty) {
-                onBuffering()
-                return
-            }
-        }
+    internal func onBuffering() {
+        view?.hidePleaseWait(hide: false)
     }
 
-    private func onBuffering() {
-        view?.onBuffering()
-    }
-
-    private func onActuallyPlaying(_ item: AVPlayerItem) {
+    internal func onActuallyPlaying(_ item: AVPlayerItem) {
+        view?.hidePleaseWait(hide: true)
         view?.onTimeUpdate(progress: progressInfoCreator.createProgressInfo(item))
     }
 
