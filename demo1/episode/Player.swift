@@ -6,9 +6,8 @@
 import Foundation
 
 protocol Player {
-    var isPlaying: Bool { get }
 
-    var hasEnded: Bool { get }
+    func onPlayPauseClicked()
 
     func play()
 

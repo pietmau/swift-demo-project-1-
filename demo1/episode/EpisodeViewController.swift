@@ -36,64 +36,39 @@ class EpisodeViewController: UIViewController, PlayerView {
 
     private func initPlayer() {
         if let feedUrl = feedItem?.enclosure?.attributes?.url, let audioUrl = URL(string: feedUrl) {
-            player = PlayerImpl(url: audioUrl, callback: self)
-            player?.play()
+            player = PlayerImpl(url: audioUrl, view: self)
         }
-    }
-
-    func onTimeUpdate(duration: TimeLabel, position: TimeLabel, progress: Double) {
-        self.duration.text = duration.description
-        self.length.text = position.description
-        slider.value = Float(progress)
-        if (playerIsPlaying()) {
-            setButtonPlaying()
-        }
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        //player?.stop()
-    }
-
-    @IBAction func onPlayPauseClicked(_ sender: UIButton) {
-        if playerIsPlaying() {
-            pause()
-            return
-        }
-        if (player?.hasEnded == true) {
-            restart()
-            return
-        }
-        play()
-    }
-
-    private func restart() {
-        player?.restart()
-        setButtonPlaying()
-    }
-
-    private func play() {
-        player?.play()
-        setButtonPlaying()
-    }
-
-    private func pause() {
-        player?.pause()
-        playPauseButton.setImage(#imageLiteral(resourceName:"play-256"), for: .normal)
-    }
-
-    private func playerIsPlaying() -> Bool {
-        return player?.isPlaying == true
-    }
-
-    private func setButtonPlaying() {
-        playPauseButton.setImage(#imageLiteral(resourceName:"white-pause-512"), for: .normal)
     }
 
     @IBAction func onSlide(_ sender: UISlider) {
         player?.seekTo(sender.value)
     }
 
-    func onPlaybackEnded() {
+    func onTimeUpdate(progress: ProgressInfo) {
+        self.duration.text = progress.durationLabel.description
+        self.length.text = progress.currrentTimeLabel.description
+        slider.value = Float(progress.currentTimeInPercent)
+        showPauseButton()
+    }
+
+    @IBAction func onPlayPauseClicked(_ sender: UIButton) {
+        player?.onPlayPauseClicked()
+    }
+
+    public func showPlay() {
+        playPauseButton.setImage(#imageLiteral(resourceName:"play-256"), for: .normal)
+    }
+
+
+    public func showPauseButton() {
+        playPauseButton.setImage(#imageLiteral(resourceName:"white-pause-512"), for: .normal)
+    }
+
+    public func showRestart() {
         playPauseButton.setImage(#imageLiteral(resourceName:"restart"), for: .normal)
+    }
+
+    public func onBuffering(){
+
     }
 }

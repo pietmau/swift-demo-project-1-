@@ -5,5 +5,13 @@
 
 import Foundation
 
-protocol PlayerView: PlayerCallback {
+protocol PlayerView {
+
+    func showRestart()
+
+    func showPlay()
+
+    func onTimeUpdate(progress: ProgressInfo)
+
+    func onBuffering()
 }

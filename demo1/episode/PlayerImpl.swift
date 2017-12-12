@@ -1,26 +1,16 @@
-//
-// Created by Maurizio Pietrantuono on 05/12/2017.
-// Copyright (c) 2017 Maurizio Pietrantuono. All rights reserved.
-//
-
 import Foundation
 import AVFoundation
 
 class PlayerImpl: NSObject, Player {
     private let audioPlayer: AVPlayer
-    private var callback: PlayerCallback?
+    private var view: PlayerView?
     private var observer: Any? = nil
-    var isPlaying: Bool {
-        get {
-            return (audioPlayer.rate != 0 && audioPlayer.error == nil)
-        }
-    }
-    var hasEnded: Bool = false
+    private let progressInfoCreator: ProgressInfoCreator = ProgressInfoCreator()
+    private var hasEnded: Bool = false
 
-    init(url: URL, callback: PlayerCallback) {
-        self.callback = callback
+    init(url: URL, view: PlayerView) {
+        self.view = view
         audioPlayer = AVPlayer(url: url)
-        AVPlayerView
         super.init()
         addCallback()
     }
@@ -28,36 +18,82 @@ class PlayerImpl: NSObject, Player {
     private func addCallback() {
         let interval = CMTimeMake(1, 1)
         observer = audioPlayer.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { _ in
-            self.calculateAndSetDurationAndProgress()
+            self.calculateState()
         })
-        NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(note:)),
-                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: audioPlayer.currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying(note:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: audioPlayer.currentItem)
+    }
+
+    func onPlayPauseClicked() {
+        if isPlaying() {
+            pause()
+            return
+        }
+        if (hasEnded == true) {
+            restart()
+            return
+        }
+        play()
+    }
+
+    private func isPlaying() -> Bool {
+        return audioPlayer.rate == 1 && audioPlayer.error == nil
     }
 
     @objc
     func playerDidFinishPlaying(note: NSNotification) {
         hasEnded = true
-        callback?.onPlaybackEnded()
+        view?.showRestart()
     }
 
-    private func calculateAndSetDurationAndProgress() {
-        let duration = self.audioPlayer.currentItem?.duration.seconds
-        let currrentTime = self.audioPlayer.currentTime().seconds
-        let durationLabel = TimeLabel(duration)
-        let currrentTimeLabel = TimeLabel(currrentTime)
-        let currentTimeInPercent = calculatePercentage(duration, currrentTime)
-        callback?.onTimeUpdate(duration: durationLabel, position: currrentTimeLabel, progress: currentTimeInPercent)
-    }
-
-    private func calculatePercentage(_ duration: Double?, _ time: Double?) -> Double {
-        if (duration?.isNaN != false || time?.isNaN != false) {
-            return 50.0 / 100.0
+    private func calculateState() {
+        if (audioPlayer.rate != 0.0) {
+            onPlayerPlaying()
+            return
         }
-        return (time! / duration!) * 100
+        if (audioPlayer.rate == 0.0) {
+            onPlayerNotPlaying()
+            return
+        }
+    }
+
+    private func onPlayerNotPlaying() {
+        if (audioPlayer.error == nil) {
+            onPause()
+            return
+        }
+        onError()
+    }
+
+    private func onError() {
+    }
+
+    private func onPause() {
+        view?.showPlay()
+    }
+
+    private func onPlayerPlaying() {
+        hasEnded = false
+        if let item = self.audioPlayer.currentItem {
+            if (item.isPlaybackLikelyToKeepUp) {
+                onActuallyPlaying(item)
+                return
+            }
+            if (item.isPlaybackBufferEmpty) {
+                onBuffering()
+                return
+            }
+        }
+    }
+
+    private func onBuffering() {
+        view?.onBuffering()
+    }
+
+    private func onActuallyPlaying(_ item: AVPlayerItem) {
+        view?.onTimeUpdate(progress: progressInfoCreator.createProgressInfo(item))
     }
 
     func play() {
-        hasEnded = false
         audioPlayer.play()
     }
 
