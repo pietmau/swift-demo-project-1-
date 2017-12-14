@@ -4,8 +4,11 @@
 //
 
 import Foundation
+import FeedKit
 
 protocol Player {
+
+    func start(feed: RSSFeedItem?, view: PlayerView, imageUrl: URL?)
 
     func onPlayPauseClicked()
 

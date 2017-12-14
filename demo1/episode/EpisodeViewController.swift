@@ -10,6 +10,7 @@ import UIKit
 import FeedKit
 import Kingfisher
 import AVKit
+import MediaPlayer
 
 class EpisodeViewController: UIViewController, PlayerView {
     @IBOutlet var image: UIImageView!
@@ -37,9 +38,8 @@ class EpisodeViewController: UIViewController, PlayerView {
     }
 
     private func initPlayer() {
-        if let feedUrl = feedItem?.enclosure?.attributes?.url, let audioUrl = URL(string: feedUrl) {
-            player = PlayerImpl(url: audioUrl, view: self)
-        }
+        player = PlayerImpl.getInstance()
+        player?.start(feed: feedItem, view: self, imageUrl: imageUrl)
     }
 
     @IBAction func onSlide(_ sender: UISlider) {

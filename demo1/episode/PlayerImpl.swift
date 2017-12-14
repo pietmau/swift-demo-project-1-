@@ -1,19 +1,39 @@
 import Foundation
 import AVFoundation
+import MediaPlayer
+import FeedKit
 
 class PlayerImpl: NSObject, Player, PlayeStateCallback {
-    let audioPlayer: AVPlayer
+    internal let audioPlayer: AVPlayer
     private var view: PlayerView?
+    private var feed: RSSFeedItem?
+    private var imageUrl: URL?
     private var observer: Any? = nil
     private let progressInfoCreator: ProgressInfoCreator = ProgressInfoCreator()
     private let stateCalculator: StateCalculator = StateCalculator()
 
-    init(url: URL, view: PlayerView) {
+    private static let INSTANCE: Player = PlayerImpl()
+
+    func start(feed: RSSFeedItem?, view: PlayerView, imageUrl: URL?) {
+        self.imageUrl = imageUrl
         self.view = view
-        audioPlayer = AVPlayer(url: url)
+        self.feed = feed
+        if let feed = feed, let feedUrl = feed.enclosure?.attributes?.url, let audioUrl = URL(string: feedUrl) {
+            let playerItem = AVPlayerItem(url: audioUrl)
+            audioPlayer.replaceCurrentItem(with: playerItem)
+        }
+    }
+
+    static func getInstance() -> Player {
+        return PlayerImpl.INSTANCE
+    }
+
+    override private init() {
+        audioPlayer = AVPlayer()
         super.init()
         stateCalculator.setCallback(self)
         addCallback()
+        setupRemoteTransportControls()
     }
 
     private func addCallback() {
@@ -36,6 +56,7 @@ class PlayerImpl: NSObject, Player, PlayeStateCallback {
 
     private func calculateState() {
         stateCalculator.calculateState()
+        updateNowPlaying()
     }
 
     internal func onError() {
@@ -82,6 +103,50 @@ class PlayerImpl: NSObject, Player, PlayeStateCallback {
     func restart() {
         seekTo(0)
         audioPlayer.play()
+    }
+
+    func setupRemoteTransportControls() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.playCommand.addTarget { [unowned self] event in
+            if self.audioPlayer.rate == 0.0 {
+                self.audioPlayer.play()
+                return .success
+            }
+            return .commandFailed
+        }
+        commandCenter.pauseCommand.addTarget { [unowned self] event in
+            if self.audioPlayer.rate == 1.0 {
+                self.audioPlayer.pause()
+                return .success
+            }
+            return .commandFailed
+        }
+    }
+
+    func updateNowPlaying() {
+        print("in " + String(Date.timeIntervalSinceReferenceDate))
+        DispatchQueue.global(qos: .utility).async { () -> Void in
+            print("start " + String(Date.timeIntervalSinceReferenceDate))
+            var nowPlayingInfo = [String: Any]()
+
+            if let image = UIImage(named: "lockscreen") {
+                nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(boundsSize: image.size) { size in
+                    return image
+                }
+            }
+            nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = self.audioPlayer.currentItem?.currentTime().seconds
+            nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = self.audioPlayer.currentItem?.asset.duration.seconds
+            nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = self.audioPlayer.rate
+            if let feed = self.feed {
+                nowPlayingInfo[MPMediaItemPropertyTitle] = feed.title
+            }
+            if let imageUrl = self.imageUrl, let data = try? Data(contentsOf: imageUrl), let image = UIImage(data: data) {
+                nowPlayingInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: image)
+            }
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+            print("finish " + String(Date.timeIntervalSinceReferenceDate))
+        }
+        print("out " + String(Date.timeIntervalSinceReferenceDate))
     }
 }
 
